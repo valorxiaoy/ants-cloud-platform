@@ -1,0 +1,9 @@
+server:
+  port: 8086
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  cloud:
+    subscribed-services: ants-goods-base-server, ants-member-base-server, ants-store-base-server, ants-integral, ants-order

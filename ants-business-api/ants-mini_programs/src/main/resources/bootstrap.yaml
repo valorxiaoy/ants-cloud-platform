@@ -1,0 +1,22 @@
+dubbo:
+  scan:
+    base-packages: com.ants.order.pay.fuyou.service.impl
+  protocol:
+    name: dubbo
+    port: -1
+  cloud:
+    subscribed-services: ants-goods-base-server, ants-member-base-server, ants-store-base-server, ants-integral
+
+spring:
+  application:
+    name: ants-mini_programs
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 192.168.80.208:9876
+    nacos:
+      discovery:
+        server-addr: 192.168.80.208:8848

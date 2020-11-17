@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: ants-member-base-server
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.80.208:8848
