@@ -1,0 +1,4 @@
+com\ants\base\goods\service\impl\GoodsBrandServiceImpl.class
+com\ants\base\goods\entity\GoodBrand.class
+com\ants\base\goods\AntsGoodsApplication.class
+com\ants\base\goods\mapper\GoodBrandMapper.class

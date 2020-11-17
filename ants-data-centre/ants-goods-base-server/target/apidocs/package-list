@@ -1,0 +1,4 @@
+com.ants.base.goods
+com.ants.base.goods.entity
+com.ants.base.goods.mapper
+com.ants.base.goods.service.impl

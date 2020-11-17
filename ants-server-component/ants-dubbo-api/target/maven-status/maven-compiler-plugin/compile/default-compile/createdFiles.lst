@@ -1,0 +1,9 @@
+com\ants\dubbo\api\service\order\IMiniProgramsPayServer.class
+com\ants\dubbo\api\base\goods\IGoodsBaseInfoService.class
+com\ants\dubbo\api\base\member\IMemberService.class
+com\ants\dubbo\api\service\integral\IGoodsIntegralService.class
+com\ants\dubbo\api\base\goods\IGoodsRecommendInfoService.class
+com\ants\dubbo\api\service\integral\IOrderIntegralService.class
+com\ants\dubbo\api\base\goods\IGoodsNewsInfoService.class
+com\ants\dubbo\api\base\store\IStoreService.class
+com\ants\dubbo\api\base\goods\IGoodsBrandService.class

@@ -1,0 +1,16 @@
+com\ants\module\goods\news\dto\SmsHomeNewProductDto.class
+com\ants\module\shopping\ShoppingCartDto.class
+com\ants\module\store\PmsProductDto.class
+com\ants\module\BaseDto.class
+com\ants\module\goods\base\dto\GoodsBrandDto.class
+com\ants\module\goods\recommend\dto\SmsHomeRecommendProductDto.class
+com\ants\module\order\OmsOrderItemDto.class
+com\ants\module\store\SysStoreDto.class
+com\ants\module\member\UmsMemberDto.class
+com\ants\module\order\SmsBasicGiftsDto.class
+com\ants\module\order\SmsCouponHistoryDto.class
+com\ants\module\goods\base\dto\GoodsManagementDto.class
+com\ants\module\goods\base\dto\GoodsDetailedInformationDto.class
+com\ants\module\order\OmsOrderDto.class
+com\ants\module\shopping\ShoppingCartGoodsDto.class
+com\ants\module\store\PmsProductAttributeCategoryDto.class

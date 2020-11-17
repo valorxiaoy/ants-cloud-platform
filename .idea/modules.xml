@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-activity/ants-activity.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-activity/ants-activity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-business-api/ants-business-api.iml" filepath="$PROJECT_DIR$/ants-business-api/ants-business-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-cloud-platform.iml" filepath="$PROJECT_DIR$/ants-cloud-platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-data-analysis/ants-data-analysis.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-data-analysis/ants-data-analysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-data-centre/ants-data-centre.iml" filepath="$PROJECT_DIR$/ants-data-centre/ants-data-centre.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-component/ants-dubbo-api/ants-dubbo-api.iml" filepath="$PROJECT_DIR$/ants-server-component/ants-dubbo-api/ants-dubbo-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-data-centre/ants-employee-base-server/ants-employee-base-server.iml" filepath="$PROJECT_DIR$/ants-data-centre/ants-employee-base-server/ants-employee-base-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-data-centre/ants-goods-base-server/ants-goods-base-server.iml" filepath="$PROJECT_DIR$/ants-data-centre/ants-goods-base-server/ants-goods-base-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-integral/ants-integral.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-integral/ants-integral.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-member/ants-member.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-member/ants-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-data-centre/ants-member-base-server/ants-member-base-server.iml" filepath="$PROJECT_DIR$/ants-data-centre/ants-member-base-server/ants-member-base-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-business-api/ants-mini_programs/ants-mini_programs.iml" filepath="$PROJECT_DIR$/ants-business-api/ants-mini_programs/ants-mini_programs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-component/ants-module/ants-module.iml" filepath="$PROJECT_DIR$/ants-server-component/ants-module/ants-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-order/ants-order.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-order/ants-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-server-centre.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-server-centre.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-component/ants-server-component.iml" filepath="$PROJECT_DIR$/ants-server-component/ants-server-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-centre/ants-stock/ants-stock.iml" filepath="$PROJECT_DIR$/ants-server-centre/ants-stock/ants-stock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-data-centre/ants-store-base-server/ants-store-base-server.iml" filepath="$PROJECT_DIR$/ants-data-centre/ants-store-base-server/ants-store-base-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ants-server-component/ants-tools/ants-tools.iml" filepath="$PROJECT_DIR$/ants-server-component/ants-tools/ants-tools.iml" />
+    </modules>
+  </component>
+</project>

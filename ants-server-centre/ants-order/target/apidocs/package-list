@@ -1,0 +1,9 @@
+com.ants.order.pay.fuyou
+com.ants.order.pay.fuyou.config
+com.ants.order.pay.fuyou.constant
+com.ants.order.pay.fuyou.entity
+com.ants.order.pay.fuyou.mapper
+com.ants.order.pay.fuyou.server
+com.ants.order.pay.fuyou.service.impl
+com.ants.order.pay.fuyou.test
+com.ants.order.pay.fuyou.util

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ants-store-base-server" />
+        <module name="ants-member" />
+        <module name="ants-order" />
+        <module name="ants-dubbo-api" />
+        <module name="ants-integral" />
+        <module name="ants-member-base-server" />
+        <module name="ants-mini_programs" />
+        <module name="ants-data-analysis" />
+        <module name="ants-tools" />
+        <module name="ants-goods-base-server" />
+        <module name="ants-activity" />
+        <module name="ants-module" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="ants-activity" target="1.8" />
+      <module name="ants-business-api" target="1.8" />
+      <module name="ants-cloud-platform" target="1.8" />
+      <module name="ants-data-analysis" target="1.8" />
+      <module name="ants-data-centre" target="1.8" />
+      <module name="ants-dubbo-api" target="1.8" />
+      <module name="ants-employee-base-server" target="1.8" />
+      <module name="ants-goods-base-server" target="1.8" />
+      <module name="ants-integral" target="1.8" />
+      <module name="ants-member" target="1.8" />
+      <module name="ants-member-base-server" target="1.8" />
+      <module name="ants-mini_programs" target="1.8" />
+      <module name="ants-module" target="1.8" />
+      <module name="ants-order" target="1.8" />
+      <module name="ants-server-centre" target="1.8" />
+      <module name="ants-server-component" target="1.8" />
+      <module name="ants-stock" target="1.8" />
+      <module name="ants-store-base-server" target="1.8" />
+      <module name="ants-tools" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ants-activity" options="-parameters" />
+      <module name="ants-data-analysis" options="-parameters" />
+      <module name="ants-dubbo-api" options="-parameters" />
+      <module name="ants-goods-base-server" options="-parameters" />
+      <module name="ants-integral" options="-parameters" />
+      <module name="ants-member" options="-parameters" />
+      <module name="ants-member-base-server" options="-parameters" />
+      <module name="ants-mini_programs" options="-parameters" />
+      <module name="ants-module" options="-parameters" />
+      <module name="ants-order" options="-parameters" />
+      <module name="ants-store-base-server" options="-parameters" />
+      <module name="ants-tools" options="-parameters" />
+    </option>
+  </component>
+</project>

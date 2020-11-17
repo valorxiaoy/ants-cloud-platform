@@ -1,0 +1,27 @@
+-classpath
+'F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-module/target/ants-module-1.0.0.Bate.jar;F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-tools/target/ants-tools-1.0.0.Bate.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/springframework/spring-beans/5.2.8.RELEASE/spring-beans-5.2.8.RELEASE.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/springframework/spring-core/5.2.8.RELEASE/spring-core-5.2.8.RELEASE.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/springframework/spring-jcl/5.2.8.RELEASE/spring-jcl-5.2.8.RELEASE.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/apache/commons/commons-lang3/3.10/commons-lang3-3.10.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/apache/httpcomponents/httpclient/4.5.12/httpclient-4.5.12.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/commons-codec/commons-codec/1.14/commons-codec-1.14.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/com/alibaba/fastjson/1.2.70/fastjson-1.2.70.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar;D:/ProgramFiles/apache-maven-3.6.3/jar/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar'
+-encoding
+'UTF-8'
+-protected
+-quiet
+-sourcepath
+'F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-dubbo-api/src/main/java;F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-dubbo-api/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2020 <a href="https://www.spring.io">Pivotal Software, Inc.</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-dubbo-api/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'ants-dubbo-api 1.0.0.Bate API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-dubbo-api/target/javadoc-bundle-options'
+-linkoffline
+'https://spring.io/spring-cloud/ants-cloud-platform/ants-server-component/ants-module/apidocs' 'F:/git-cloud-project/ants-cloud-platform/ants-server-component/ants-module/target/apidocs'
+-use
+-version
+-windowtitle
+'ants-dubbo-api 1.0.0.Bate API'

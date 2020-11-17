@@ -1,0 +1,80 @@
+{
+  "groups": [
+    {
+      "name": "rocketmq.consumer",
+      "type": "com.ants.order.pay.fuyou.config.MQConsumerConfigure",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.producer",
+      "type": "com.ants.order.pay.fuyou.config.MQProducerConfigure",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQProducerConfigure"
+    }
+  ],
+  "properties": [
+    {
+      "name": "rocketmq.consumer.consume-message-batch-max-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.consumer.consume-msg-listener-processor",
+      "type": "com.ants.order.pay.fuyou.config.MQConsumeMsgListenerProcessor",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.consumer.consume-thread-max",
+      "type": "java.lang.Integer",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.consumer.consume-thread-min",
+      "type": "java.lang.Integer",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.consumer.group-name",
+      "type": "java.lang.String",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.consumer.namesrv-addr",
+      "type": "java.lang.String",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.consumer.topics",
+      "type": "java.lang.String",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQConsumerConfigure"
+    },
+    {
+      "name": "rocketmq.producer.group-name",
+      "type": "java.lang.String",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQProducerConfigure"
+    },
+    {
+      "name": "rocketmq.producer.max-message-size",
+      "type": "java.lang.Integer",
+      "description": "消息最大值",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQProducerConfigure"
+    },
+    {
+      "name": "rocketmq.producer.namesrv-addr",
+      "type": "java.lang.String",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQProducerConfigure"
+    },
+    {
+      "name": "rocketmq.producer.retry-times-when-send-failed",
+      "type": "java.lang.Integer",
+      "description": "失败重试次数",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQProducerConfigure"
+    },
+    {
+      "name": "rocketmq.producer.send-msg-time-out",
+      "type": "java.lang.Integer",
+      "description": "消息发送超时时间",
+      "sourceType": "com.ants.order.pay.fuyou.config.MQProducerConfigure"
+    }
+  ],
+  "hints": []
+}

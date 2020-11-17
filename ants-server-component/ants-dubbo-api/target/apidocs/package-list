@@ -1,0 +1,5 @@
+com.ants.dubbo.api.base.goods
+com.ants.dubbo.api.base.member
+com.ants.dubbo.api.base.store
+com.ants.dubbo.api.service.integral
+com.ants.dubbo.api.service.order
