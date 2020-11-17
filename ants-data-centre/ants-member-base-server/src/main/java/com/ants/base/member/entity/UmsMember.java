@@ -26,6 +26,7 @@ public class UmsMember implements Serializable {
     private Long id;
 
 
+
     /**
      * 会员等级id
      **/
