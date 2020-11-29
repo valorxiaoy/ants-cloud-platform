@@ -16,7 +16,13 @@ public interface IOrderServer {
      * @param orderSn 订单编号
      * @return 订单对象
      */
-    OmsOrderDto searchOrder(String orderSn);
+    OmsOrderDto searchOrder(String storeId, String memberId, String orderSn);
 
+    /**
+     * 更新订单数据
+     *
+     * @param omsOrderDto 待更新订单数据
+     * @return 更新后的订单对象
+     */
     OmsOrderDto update(OmsOrderDto omsOrderDto);
 }

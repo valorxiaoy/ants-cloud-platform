@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 下单
+ * 订单服务
  */
-@RestController
 @Slf4j
+@RestController
 public class MOrderController {
 
     @Autowired
@@ -23,13 +23,14 @@ public class MOrderController {
     /**
      * 创建订单
      *
-     * @param storeId
-     * @param memberId
-     * @param sourceType
-     * @param orderType
-     * @param shoppingCartDtos
-     * @return
+     * @param storeId          门店ID
+     * @param memberId         会员ID
+     * @param sourceType       订单来源
+     * @param orderType        订单类型
+     * @param shoppingCartDtos 购物车列表
+     * @return 订单对象
      */
+    // @SentinelResource(value = "pre-created-order", blockHandler = "blockHandlerForGetUser")
     @RequestMapping(value = "/mini/programs/order/{storeId}/{memberId}/{sourceType}/{orderType}", method = RequestMethod.POST)
     public Object createOrder(@PathVariable("storeId") String storeId, @PathVariable("memberId") String memberId,
                               @PathVariable("sourceType") String sourceType, @PathVariable("orderType") String orderType,
@@ -50,12 +51,22 @@ public class MOrderController {
     }
 
     /**
+     * blockHandler 函数，原方法调用被限流/降级/系统保护的时候调用
+     * @param id
+     * @param ex
+     * @return
+     */
+    /*public Object blockHandlerForGetUser(String id, BlockException ex) {
+        return null;
+    }*/
+
+    /**
      * 根据订单编号 查询待支付订单
      *
-     * @param storeId
-     * @param memberId
-     * @param orderSn
-     * @return
+     * @param storeId  门店ID
+     * @param memberId 会员ID
+     * @param orderSn  订单编号
+     * @return 订单对象
      */
     @RequestMapping(value = "/mini/programs/order/{storeId}/{memberId}/{orderSn}", method = RequestMethod.POST)
     public Object searchOmsOrder(@PathVariable("storeId") String storeId, @PathVariable("memberId") String memberId, @PathVariable("orderSn") String orderSn) {
@@ -74,6 +85,12 @@ public class MOrderController {
         }
     }
 
+    /**
+     * 更新订单信息
+     *
+     * @param omsOrderDto 新订单数据
+     * @return 更新后的订单对象
+     */
     @RequestMapping(value = "/mini/programs/order/{storeId}/{memberId}", method = RequestMethod.POST)
     public Object updateOrder(OmsOrderDto omsOrderDto) {
         try {

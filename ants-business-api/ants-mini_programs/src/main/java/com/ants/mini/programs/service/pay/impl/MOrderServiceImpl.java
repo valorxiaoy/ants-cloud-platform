@@ -25,9 +25,19 @@ import java.util.List;
 @Service
 public class MOrderServiceImpl implements IMOrderService {
 
-    @DubboReference
+    @DubboReference(loadbalance = "random", timeout = 1000)
     private IOrderServer orderServer;
 
+    /**
+     * 创建订单
+     *
+     * @param storeId          门店ID
+     * @param memberId         会员ID
+     * @param sourceType       订单来源
+     * @param orderType        订单类型
+     * @param shoppingCartDtos 购物车列表
+     * @return 订单对象
+     */
     @Override
     public OmsOrderDto createOmsOrder(String storeId, String memberId, Integer sourceType, Integer orderType, List<MShoppingCartDto> shoppingCartDtos) {
         // 组装真正的购物车对象
@@ -48,9 +58,17 @@ public class MOrderServiceImpl implements IMOrderService {
         return null;
     }
 
+    /**
+     * 查找订单（含赠品活动）
+     *
+     * @param storeId  门店ID
+     * @param memberId 会员ID
+     * @param orderSn  订单编号
+     * @return 订单对象
+     */
     @Override
     public OmsOrderDto searchOmsOrder(String storeId, String memberId, String orderSn) {
-        OmsOrderDto omsOrderDto = orderServer.searchOrder(orderSn);
+        OmsOrderDto omsOrderDto = orderServer.searchOrder(storeId, memberId, orderSn);
         return omsOrderDto;
     }
 

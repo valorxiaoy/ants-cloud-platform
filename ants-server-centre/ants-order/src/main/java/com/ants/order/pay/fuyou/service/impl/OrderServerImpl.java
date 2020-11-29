@@ -1,7 +1,9 @@
 package com.ants.order.pay.fuyou.service.impl;
 
+import com.ants.dubbo.api.service.activity.IMatchingSmsBasicGiftsService;
 import com.ants.dubbo.api.service.order.IOrderServer;
 import com.ants.module.order.OmsOrderDto;
+import com.ants.module.order.SmsBasicGiftsDto;
 import com.ants.module.order.SmsCouponHistoryDto;
 import com.ants.order.pay.fuyou.entity.OmsOrder;
 import com.ants.order.pay.fuyou.mapper.OmsOrderMapper;
@@ -9,6 +11,7 @@ import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,10 +32,15 @@ public class OrderServerImpl implements IOrderServer {
     @Autowired
     private OmsOrderMapper omsOrderMapper;
 
+    @DubboReference
+    private IMatchingSmsBasicGiftsService matchingSmsBasicGiftsService;
+
     @Override
-    public OmsOrderDto searchOrder(String orderSn) {
+    public OmsOrderDto searchOrder(String storeId, String memberId, String orderSn) {
         try {
             QueryWrapper<OmsOrder> omsOrderQueryWrapper = new QueryWrapper<>();
+            omsOrderQueryWrapper.eq("store_id", storeId);
+            omsOrderQueryWrapper.eq("member_id", memberId);
             omsOrderQueryWrapper.eq("order_sn", orderSn);
 
             List<OmsOrder> omsOrders = omsOrderMapper.selectList(omsOrderQueryWrapper);
@@ -45,6 +53,10 @@ public class OrderServerImpl implements IOrderServer {
 
             OmsOrderDto omsOrderDto = new OmsOrderDto();
             BeanUtils.copyProperties(omsOrderDto, omsOrder);
+
+            // 匹配赠品活动
+            List<SmsBasicGiftsDto> smsBasicGiftsDtoList = matchingSmsBasicGiftsService.searchMatchingBasicGiftsByOrder(omsOrderDto);
+            omsOrderDto.setSmsBasicGifts(smsBasicGiftsDtoList);
 
             return omsOrderDto;
         } catch (BusinessException businessException) {

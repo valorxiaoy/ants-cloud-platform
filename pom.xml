@@ -35,6 +35,11 @@
         <spring-cloud-consul.version>2.2.4.RELEASE</spring-cloud-consul.version>
         <spring-cloud-config.version>2.2.5.RELEASE</spring-cloud-config.version>
         <spring-cloud-zookeeper.version>2.2.3.RELEASE</spring-cloud-zookeeper.version>
+        <spring-cloud-starter-alibaba-sentinel.version>2.1.1.RELEASE</spring-cloud-starter-alibaba-sentinel.version>
+        <sentinel-annotation-aspectj.version>1.7.0</sentinel-annotation-aspectj.version>
+        <sentinel-datasource-nacos.version>1.7.1</sentinel-datasource-nacos.version>
+        <sentinel-spring-cloud-gateway-adapter.version>1.7.0</sentinel-spring-cloud-gateway-adapter.version>
+        <spring-cloud-starter-gateway.version>2.2.5.RELEASE</spring-cloud-starter-gateway.version>
 
         <!-- Apache Dubbo -->
         <dubbo.version>2.7.8</dubbo.version>
@@ -206,7 +211,40 @@
                 <version>${rocketmq.starter.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${spring-cloud-starter-alibaba-sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-annotation-aspectj</artifactId>
+                <version>${sentinel-annotation-aspectj.version}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel-datasource-nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${sentinel-spring-cloud-gateway-adapter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel-spring-cloud-gateway-adapter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring-cloud-starter-gateway.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
