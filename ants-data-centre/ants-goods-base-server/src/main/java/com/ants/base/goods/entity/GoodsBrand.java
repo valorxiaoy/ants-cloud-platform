@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @Data
 @TableName("good_brand")
-public class GoodBrand implements Serializable {
+public class GoodsBrand implements Serializable {
 
 
     @TableId(value = "id", type = IdType.AUTO)

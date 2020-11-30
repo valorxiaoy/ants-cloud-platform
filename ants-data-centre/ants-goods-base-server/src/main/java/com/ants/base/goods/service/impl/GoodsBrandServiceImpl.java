@@ -1,6 +1,6 @@
 package com.ants.base.goods.service.impl;
 
-import com.ants.base.goods.entity.GoodBrand;
+import com.ants.base.goods.entity.GoodsBrand;
 import com.ants.base.goods.mapper.GoodsBrandMapper;
 import com.ants.dubbo.api.base.goods.IGoodsBrandService;
 import com.ants.module.goods.base.dto.GoodsBrandDto;
@@ -26,7 +26,7 @@ public class GoodsBrandServiceImpl implements IGoodsBrandService {
     @Override
     public GoodsBrandDto searchGoodsBrandByGoodsId(Integer goodsId) {
         try {
-            GoodBrand goodBrand = goodBrandMapper.selectById(goodsId);
+            GoodsBrand goodBrand = goodBrandMapper.selectById(goodsId);
             if (goodBrand == null) {
                 String exceptionMsg = String.format("商品品牌基础信息异常, 未找到商品品牌, 参数goodsId: %s", goodsId);
                 throw new BusinessException(exceptionMsg);
