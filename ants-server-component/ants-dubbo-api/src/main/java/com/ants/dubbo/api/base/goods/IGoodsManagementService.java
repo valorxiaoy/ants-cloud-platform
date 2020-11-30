@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2020-11-20
  */
 
-public interface IGoodManagementService {
+public interface IGoodsManagementService {
     /**
      * 商品分类
      * 一级 pid=0

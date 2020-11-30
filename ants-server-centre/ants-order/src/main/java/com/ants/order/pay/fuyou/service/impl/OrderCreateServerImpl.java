@@ -25,12 +25,10 @@ package com.ants.order.pay.fuyou.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.ants.dubbo.api.base.goods.IGoodManagementService;
-import com.ants.dubbo.api.base.goods.IGoodsBrandService;
+import com.ants.dubbo.api.base.goods.IGoodsManagementService;
 import com.ants.dubbo.api.base.member.IMemberService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;
-import com.ants.module.goods.base.dto.GoodsBrandDto;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
 import com.ants.module.goods.base.dto.GoodsManagementDto;
 import com.ants.module.member.UmsMemberDto;
@@ -116,7 +114,7 @@ public class OrderCreateServerImpl {
     private IOrderIntegralService orderIntegralService;
 
     @DubboReference
-    private IGoodManagementService goodManagementService;
+    private IGoodsManagementService goodManagementService;
 
     @Autowired
     private OmsOrderMapper omsOrderMapper;
