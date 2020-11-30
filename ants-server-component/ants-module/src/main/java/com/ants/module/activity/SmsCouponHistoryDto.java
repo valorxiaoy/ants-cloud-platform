@@ -1,4 +1,4 @@
-package com.ants.module.order;
+package com.ants.module.activity;
 
 import lombok.Data;
 
