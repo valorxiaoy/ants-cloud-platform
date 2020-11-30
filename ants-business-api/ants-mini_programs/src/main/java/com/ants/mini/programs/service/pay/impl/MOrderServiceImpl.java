@@ -7,7 +7,6 @@ import com.ants.mini.programs.service.pay.IMOrderService;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.module.shopping.ShoppingCartDto;
-import com.ants.tools.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -25,9 +24,19 @@ import java.util.List;
 @Service
 public class MOrderServiceImpl implements IMOrderService {
 
-    @DubboReference
+    @DubboReference(loadbalance = "random", timeout = 1000)
     private IOrderServer orderServer;
 
+    /**
+     * 创建订单
+     *
+     * @param storeId          门店ID
+     * @param memberId         会员ID
+     * @param sourceType       订单来源
+     * @param orderType        订单类型
+     * @param shoppingCartDtos 购物车列表
+     * @return 订单对象
+     */
     @Override
     public OmsOrderDto createOmsOrder(String storeId, String memberId, Integer sourceType, Integer orderType, List<MShoppingCartDto> shoppingCartDtos) {
         // 组装真正的购物车对象
@@ -48,9 +57,17 @@ public class MOrderServiceImpl implements IMOrderService {
         return null;
     }
 
+    /**
+     * 查找订单（含赠品活动）
+     *
+     * @param storeId  门店ID
+     * @param memberId 会员ID
+     * @param orderSn  订单编号
+     * @return 订单对象
+     */
     @Override
     public OmsOrderDto searchOmsOrder(String storeId, String memberId, String orderSn) {
-        OmsOrderDto omsOrderDto = orderServer.searchOrder(orderSn);
+        OmsOrderDto omsOrderDto = orderServer.searchOrder(storeId, memberId, orderSn);
         return omsOrderDto;
     }
 
@@ -69,14 +86,14 @@ public class MOrderServiceImpl implements IMOrderService {
     /**
      * 发送创建订单任务
      *
-     * @param msg 下单JSON对象
-     * @throws BusinessException 业务异常
+     * @param msg           下单JSON对象
+     * @param notifyAddress 异步通知地址
      */
     private void omsOrderProducer(String msg, String notifyAddress) {
         try {
             // TODO 将配置抽取到配置文件中
             DefaultMQProducer producer = new DefaultMQProducer("producer_group");
-            producer.setNamesrvAddr("192.168.80.208:9876");
+            producer.setNamesrvAddr("192.168.1.36:9876");
             producer.setRetryTimesWhenSendAsyncFailed(1);
             producer.start();
 

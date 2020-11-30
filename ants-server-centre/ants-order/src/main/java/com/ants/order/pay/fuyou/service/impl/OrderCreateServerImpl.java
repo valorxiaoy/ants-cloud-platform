@@ -17,7 +17,6 @@
  * OmsOrderDto omsOrderDto = preCreateOrder(sysStoreDto, umsMemberDto, shoppingCartDto);
  * // 保存订单数据
  * saveOrder(omsOrderDto);
- * <p>
  * // TODO 处理订单流水
  * }
  * }
@@ -52,7 +51,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.support.ErrorMessage;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -64,7 +63,7 @@ import java.util.List;
  * 创建预支付订单
  * <p>
  * 流程简书
- * 1. 创建订单
+ * 1.0 创建订单
  * 1.1 检查参数
  * 1.2 获取门店数据
  * 1.3 获取会员数据
@@ -80,7 +79,7 @@ import java.util.List;
  * @create 2020-11-09 19:11
  **/
 @Slf4j
-@Service
+@Component
 public class OrderCreateServerImpl {
 
     /**
@@ -102,7 +101,6 @@ public class OrderCreateServerImpl {
      * 富有订单前缀
      */
     private final static String FUYOU_PAY_ORDER_PREFIX = "1327";
-
     /**
      * 订单核销码位数
      */
@@ -199,20 +197,15 @@ public class OrderCreateServerImpl {
      * @return 总店对象
      */
     private SysStoreDto searchMasterStoreByBranchStoreId(ShoppingCartDto shoppingCartDto) {
-        try {
-            Integer storeId = shoppingCartDto.getStoreId();
-            if (storeId == null || storeId == 0) {
-                throw new BusinessException(String.format("门店信息不存在, 查询ID为: %s", storeId));
-            }
-            SysStoreDto sysStoreDto = storeService.searchMasterStoreByBranchStoreId(storeId);
-            if (sysStoreDto == null) {
-                throw new BusinessException(String.format("未找到ID未%s的门店信息", storeId));
-            }
-            return sysStoreDto;
-        } catch (BusinessException businessException) {
-            businessException.printStackTrace();
-            return null;
+        Integer storeId = shoppingCartDto.getStoreId();
+        if (storeId == null || storeId == 0) {
+            throw new BusinessException(String.format("门店信息不存在, 查询ID为: %s", storeId));
         }
+        SysStoreDto sysStoreDto = storeService.searchMasterStoreByBranchStoreId(storeId);
+        if (sysStoreDto == null) {
+            throw new BusinessException(String.format("未找到ID未%s的门店信息", storeId));
+        }
+        return sysStoreDto;
     }
 
     /**

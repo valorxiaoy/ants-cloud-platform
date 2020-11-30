@@ -1,18 +1,30 @@
 package com.ants.order.pay.fuyou.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ants.dubbo.api.service.order.IMiniProgramsPayServer;
+import com.ants.module.order.OmsOrderDto;
 import com.ants.order.pay.fuyou.constant.FyPayConstant;
+import com.ants.order.pay.fuyou.entity.SmsWxPay;
+import com.ants.order.pay.fuyou.mapper.SmsWxPayMapper;
 import com.ants.order.pay.fuyou.util.FyPayUtil;
+import com.ants.order.pay.fuyou.util.FyRandomNumberGenerator;
 import com.ants.tools.exception.ApiException;
+import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.HttpUtils;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +37,91 @@ import java.util.Map;
 @Slf4j
 @DubboService
 public class MiniProgramsPayServerImpl implements IMiniProgramsPayServer {
+
+    /**
+     * 支付结果回调地址
+     */
+    private final static String ORDER_NOTIFY_URL = "http://47.108.128.208:8089/fuiou/pay/notify";
+
+    @Autowired
+    private SmsWxPayMapper smsWxPayMapper;
+
+    @Override
+    public Map<String, String> createPreOrderMap(String openId, OmsOrderDto omsOrderDto) throws Exception {
+        log.info(String.format("OpenId: %s, 订单详情：%s", openId, JSONObject.toJSONString(omsOrderDto)));
+
+        // 门店ID
+        Integer storeId = omsOrderDto.getStoreId();
+        // 获取富有支付信息
+        SmsWxPay fyPayInfo = getFyPayInfo(storeId);
+
+        Map<String, String> map = new HashMap<>();
+        // 必填 接口版本号
+        map.put("version", "1.0");
+        // 必填 机构x`号,接入机构在富友的唯一代码
+        map.put("ins_cd", "08K0021776");
+        // 必填 商户号,富友分配给二级商户的商户号
+        map.put("mchnt_cd", fyPayInfo.getMchId());
+        // 必填 终端号(没有真实终端号统一填88888888)
+        map.put("term_id", "88888888");
+        // 必填 随机字符串
+        map.put("random_str", FyRandomNumberGenerator.generateNumber());
+        // 必填 签名, 详见签名生成算法
+        map.put("sign", "");
+        // 商品描述, 商品或支付单简要描述
+        map.put("goods_des", "小蚂蚁科技订单");
+        // 单品优惠功能字段，见文档中 http://fundwx.fuiou.com/doc/#/scanpay/introduction?id=goods_detail%e8%af%b4%e6%98%8e%e5%ad%97%e6%ae%b5
+        map.put("goods_detail", "");
+        // 商品标记
+        map.put("goods_tag", "");
+        // 商品标识
+        map.put("product_id", "");
+        // 附加数据
+        map.put("addn_inf", "");
+        // 必填 商户订单号,商户系统内部的订单号（5到30个字符、只能包含字母数字,区分大小写)
+        map.put("mchnt_order_no", omsOrderDto.getOrderSn());
+        // 货币类型,默认人民币：CNY
+        map.put("curr_type", "CNY");
+        // 必填 总金额,订单总金额,单位为分
+        if (omsOrderDto.getTotalAmount() == null) {
+            return null;
+        }
+        BigDecimal amount = omsOrderDto.getTotalAmount();//单位元
+        amount = amount.multiply(new BigDecimal(100));// 单位分
+        amount = amount.setScale(0, RoundingMode.DOWN);//取整
+        map.put("order_amt", amount.toString());
+        // 必填 终端IP
+        map.put("term_ip", "127.0.0.1");
+        // 必填 交易起始时间,订单生成时间,格式为yyyyMMddHHmmss
+        SimpleDateFormat sdf_no = new SimpleDateFormat("yyyyMMddHHmmss");
+        Calendar calendar = Calendar.getInstance();
+        map.put("txn_begin_ts", sdf_no.format(calendar.getTime()));
+        // 必填 通知地址,接收富友异步通知回调地址,通知url必须为直接可访问的url,不能携带参数
+        map.put("notify_url", ORDER_NOTIFY_URL);
+        /*
+         * 限制支付,
+         * no_credit:不能使用信用卡
+         * credit_group：不能使用花呗以及信用卡
+         */
+        map.put("limit_pay", "");
+        /*
+         * 必填 订单类型:
+         * JSAPI--公众号支付
+         * FWC--支付宝服务窗、支付宝小程序
+         * LETPAY-微信小程序
+         * BESTPAY--翼支付js
+         */
+        map.put("trade_type", "LETPAY");
+        // 用户标识(暂已废弃,不影响已对接完成的)
+        map.put("openid", "");
+        // 子商户用户标识
+        // 支付宝服务窗为用户buyer_id(此场景必填)
+        // 微信公众号为用户的openid(小程序,公众号,服务窗必填)
+        map.put("sub_openid", openId);
+        // 子商户公众号id, 微信交易为商户的appid(小程序,公众号必填)
+        map.put("sub_appid", fyPayInfo.getAppId());
+        return map;
+    }
 
     @Override
     public Map<String, String> buildOrderMap(Map<String, String> orderMap) throws Exception {
@@ -74,5 +171,21 @@ public class MiniProgramsPayServerImpl implements IMiniProgramsPayServer {
         }
 
         return null;
+    }
+
+    /**
+     * 获取富有支付信息
+     *
+     * @param storeId 门店ID
+     * @return 富有支付信息
+     */
+    private SmsWxPay getFyPayInfo(Integer storeId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("store_id", storeId);
+        SmsWxPay smsWxPay = smsWxPayMapper.selectOne(queryWrapper);
+        if (smsWxPay == null || "".equals(smsWxPay.getMchId()) || "".equals(smsWxPay.getAppId())) {
+            throw new BusinessException(String.format("当前门店未配置富有商户号或小程序APP_ID, 参数storeId: %s", storeId));
+        }
+        return smsWxPay;
     }
 }

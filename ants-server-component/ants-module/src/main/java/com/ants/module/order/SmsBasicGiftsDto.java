@@ -1,5 +1,7 @@
 package com.ants.module.order;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * @author Yueyang
  * @create 2020-11-16 7:49
  **/
+@Data
 public class SmsBasicGiftsDto implements Serializable {
 
     /**

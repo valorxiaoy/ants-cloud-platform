@@ -14,7 +14,7 @@ spring:
     stream:
       rocketmq:
         binder:
-          name-server: 192.168.80.208:9876
+          name-server: 192.168.1.36:9876
     nacos:
       discovery:
-        server-addr: 192.168.80.208:8848
+        server-addr: 192.168.1.36:8848

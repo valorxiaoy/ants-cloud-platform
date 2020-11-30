@@ -16,7 +16,29 @@ spring:
     stream:
       rocketmq:
         binder:
-          name-server: 192.168.80.208:9876
+          name-server: 192.168.1.36:9876
+    cloud:
+      sentinel:
+        transport:
+          port: 8719
+          dashboard: localhost:8080
+    #      gateway:
+    #        enabled: true
+    #        discovery:
+    #          locator:
+    #            lower-case-service-id: true
+    #        routes:
+    #          # Add your routes here.
+    #          - id: product_route
+    #            uri: lb://product
+    #            predicates:
+    #              - Path=/product/**
+    #          - id: httpbin_route
+    #            uri: https://httpbin.org
+    #            predicates:
+    #              - Path=/httpbin/**
+    #            filters:
+    #              - RewritePath=/httpbin/(?<segment>.*), /$\{segment}
     nacos:
       discovery:
-        server-addr: 192.168.80.208:8848
+        server-addr: 192.168.1.36:8848
