@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 @Data
 @TableName("good_management")
-public class GoodManagement implements Serializable {
+public class GoodsManagement implements Serializable {
 
 
     @TableId(value = "id", type = IdType.AUTO)

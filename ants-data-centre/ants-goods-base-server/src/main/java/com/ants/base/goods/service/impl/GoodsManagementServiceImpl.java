@@ -1,8 +1,8 @@
 package com.ants.base.goods.service.impl;
 
-import com.ants.base.goods.entity.GoodManagement;
-import com.ants.base.goods.mapper.GoodManagementMapper;
-import com.ants.dubbo.api.base.goods.IGoodManagementService;
+import com.ants.base.goods.entity.GoodsManagement;
+import com.ants.base.goods.mapper.GoodsManagementMapper;
+import com.ants.dubbo.api.base.goods.IGoodsManagementService;
 import com.ants.module.goods.base.dto.GoodsManagementDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
@@ -20,17 +20,17 @@ import java.util.List;
  */
 @Slf4j
 @DubboService
-public class GoodManagementServiceImpl extends ServiceImpl
-        <GoodManagementMapper, GoodManagement> implements IGoodManagementService {
+public class GoodsManagementServiceImpl extends ServiceImpl
+        <GoodsManagementMapper, GoodsManagement> implements IGoodsManagementService {
 
     @Resource
-    private GoodManagementMapper goodManagementMapper;
+    private GoodsManagementMapper goodManagementMapper;
 
 
     @Override
     public List<GoodsManagementDto> searchGoodManagement(GoodsManagementDto goodsManagementDto) {
         try {
-            QueryWrapper<GoodManagement> queryWrapper = new QueryWrapper();
+            QueryWrapper<GoodsManagement> queryWrapper = new QueryWrapper();
             if (goodsManagementDto.getPid() == 0) {
                 queryWrapper.in("store_id", goodsManagementDto.getStoreId(), 0);
             } else {
@@ -38,7 +38,7 @@ public class GoodManagementServiceImpl extends ServiceImpl
                 queryWrapper.eq("pid", goodsManagementDto.getId());
             }
             queryWrapper.eq("is_delete", 0);
-            List<GoodManagement> list = goodManagementMapper.selectList(queryWrapper);
+            List<GoodsManagement> list = goodManagementMapper.selectList(queryWrapper);
             List<GoodsManagementDto> goodsManagementDtos = BeanUtils.converteToDtoArray(list, GoodsManagementDto.class);
             return goodsManagementDtos;
         } catch (BusinessException businessException) {
@@ -50,7 +50,7 @@ public class GoodManagementServiceImpl extends ServiceImpl
     @Override
     public GoodsManagementDto searchGoodManagementById(Integer id) {
         try {
-            GoodManagement goodBrand = goodManagementMapper.selectById(id);
+            GoodsManagement goodBrand = goodManagementMapper.selectById(id);
             if (goodBrand == null) {
                 String exceptionMsg = String.format("商品类别基础信息异常, 未找到商品分类, 参数id: %s", id);
                 throw new BusinessException(exceptionMsg);
@@ -67,16 +67,16 @@ public class GoodManagementServiceImpl extends ServiceImpl
     @Override
     public boolean createGoodManagement(GoodsManagementDto goodsManagementDto) {
         try {
-            QueryWrapper<GoodManagement> queryWrapper = new QueryWrapper<>();
+            QueryWrapper<GoodsManagement> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("is_delete", 0);
             queryWrapper.eq("name", goodsManagementDto.getName());
             queryWrapper.notIn("id", goodsManagementDto.getId());
-            List<GoodManagement> list = goodManagementMapper.selectList(queryWrapper);
+            List<GoodsManagement> list = goodManagementMapper.selectList(queryWrapper);
             if (list.size() < 0) {
                 String exceptionMsg = String.format("商品类别基础信息异常, 商品分类中已存在该名称, 参数list: %s", list);
                 throw new BusinessException(exceptionMsg);
             }
-            GoodManagement goodManagement = new GoodManagement();
+            GoodsManagement goodManagement = new GoodsManagement();
             BeanUtils.copyProperties(goodsManagementDto, goodManagement);
             if (goodManagementMapper.insert(goodManagement) < 0) {
                 String exceptionMsg = String.format("商品类别基础信息异常, 类别添加失败, 参数goodManagement: %s", goodManagement);
@@ -92,16 +92,16 @@ public class GoodManagementServiceImpl extends ServiceImpl
     @Override
     public boolean updateGoodManagement(GoodsManagementDto goodsManagementDto) {
         try {
-            QueryWrapper<GoodManagement> queryWrapper = new QueryWrapper<>();
+            QueryWrapper<GoodsManagement> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("is_delete", 0);
             queryWrapper.eq("name", goodsManagementDto.getName());
             queryWrapper.notIn("id", goodsManagementDto.getId());
-            List<GoodManagement> list = goodManagementMapper.selectList(queryWrapper);
+            List<GoodsManagement> list = goodManagementMapper.selectList(queryWrapper);
             if (list.size() < 0) {
                 String exceptionMsg = String.format("商品类别基础信息异常, 商品分类中已存在该名称, 参数list: %s", list);
                 throw new BusinessException(exceptionMsg);
             }
-            GoodManagement goodManagement = new GoodManagement();
+            GoodsManagement goodManagement = new GoodsManagement();
             BeanUtils.copyProperties(goodsManagementDto, goodManagement);
             if (goodManagementMapper.updateById(goodManagement) < 0) {
                 String exceptionMsg = String.format("商品类别基础信息异常, 类别修改失败, 参数goodManagement: %s", goodManagement);
@@ -117,7 +117,7 @@ public class GoodManagementServiceImpl extends ServiceImpl
     @Override
     public boolean deleteGoodManagement(GoodsManagementDto goodsManagementDto) {
         try {
-            GoodManagement goodManagement = new GoodManagement();
+            GoodsManagement goodManagement = new GoodsManagement();
             BeanUtils.copyProperties(goodsManagementDto, goodManagement);
             goodManagement.setIsDelete(1);
             if (goodManagementMapper.updateById(goodManagement) < 0) {
