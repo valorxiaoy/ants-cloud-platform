@@ -3,7 +3,7 @@ package com.ants.activity.service.impl;
 import com.ants.activity.entity.SmsBasicGifts;
 import com.ants.activity.mapper.SmsBasicGiftsMapper;
 import com.ants.dubbo.api.service.activity.ISmsBasicGiftsService;
-import com.ants.module.order.SmsBasicGiftsDto;
+import com.ants.module.activity.SmsBasicGiftsDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;

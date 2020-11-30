@@ -1,7 +1,7 @@
 package com.ants.dubbo.api.service.activity;
 
+import com.ants.module.activity.SmsBasicGiftsDto;
 import com.ants.module.order.OmsOrderDto;
-import com.ants.module.order.SmsBasicGiftsDto;
 
 import java.util.List;
 

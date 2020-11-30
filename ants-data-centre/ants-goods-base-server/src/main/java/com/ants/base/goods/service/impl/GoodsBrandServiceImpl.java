@@ -1,7 +1,7 @@
 package com.ants.base.goods.service.impl;
 
 import com.ants.base.goods.entity.GoodBrand;
-import com.ants.base.goods.mapper.GoodBrandMapper;
+import com.ants.base.goods.mapper.GoodsBrandMapper;
 import com.ants.dubbo.api.base.goods.IGoodsBrandService;
 import com.ants.module.goods.base.dto.GoodsBrandDto;
 import com.ants.tools.exception.BusinessException;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class GoodsBrandServiceImpl implements IGoodsBrandService {
 
     @Autowired
-    private GoodBrandMapper goodBrandMapper;
+    private GoodsBrandMapper goodBrandMapper;
 
     @Override
     public GoodsBrandDto searchGoodsBrandByGoodsId(Integer goodsId) {

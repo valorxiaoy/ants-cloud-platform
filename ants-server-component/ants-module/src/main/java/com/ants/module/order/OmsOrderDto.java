@@ -1,5 +1,7 @@
 package com.ants.module.order;
 
+import com.ants.module.activity.SmsBasicGiftsDto;
+import com.ants.module.activity.SmsCouponHistoryDto;
 import lombok.Data;
 
 import java.io.Serializable;

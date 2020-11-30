@@ -4,11 +4,10 @@ import com.ants.activity.entity.SmsCouponHistory;
 import com.ants.activity.mapper.SmsCouponHistoryMapper;
 import com.ants.dubbo.api.base.member.IMemberService;
 import com.ants.dubbo.api.service.activity.IMatchingSmsCouponService;
-import com.ants.dubbo.api.service.order.IOrderServer;
+import com.ants.module.activity.SmsCouponHistoryDto;
 import com.ants.module.constant.ActivityConstant;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.module.order.OmsOrderItemDto;
-import com.ants.module.order.SmsCouponHistoryDto;
 import com.ants.tools.utils.BeanUtils;
 import com.ants.tools.utils.DateUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -31,9 +30,6 @@ public class MatchingSmsCouponServiceImpl implements IMatchingSmsCouponService {
 
     @DubboReference
     private IMemberService memberService;
-
-    @DubboReference
-    private IOrderServer orderServer;
 
     @Autowired
     private SmsCouponHistoryMapper smsCouponHistoryMapper;

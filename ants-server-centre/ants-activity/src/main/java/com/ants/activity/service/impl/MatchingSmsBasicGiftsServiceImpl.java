@@ -6,11 +6,10 @@ import com.ants.activity.dto.MatchingRulesDto;
 import com.ants.dubbo.api.base.member.IMemberService;
 import com.ants.dubbo.api.service.activity.IMatchingSmsBasicGiftsService;
 import com.ants.dubbo.api.service.activity.ISmsBasicGiftsService;
-import com.ants.dubbo.api.service.order.IOrderServer;
+import com.ants.module.activity.SmsBasicGiftsDto;
 import com.ants.module.member.UmsMemberDto;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.module.order.OmsOrderItemDto;
-import com.ants.module.order.SmsBasicGiftsDto;
 import com.ants.tools.exception.BusinessException;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -33,9 +32,6 @@ public class MatchingSmsBasicGiftsServiceImpl implements IMatchingSmsBasicGiftsS
 
     @DubboReference
     private ISmsBasicGiftsService smsBasicGiftsService;
-
-    @DubboReference
-    private IOrderServer orderServer;
 
     /**
      * 根据订单数据，查询符合规则的赠品营销活动
