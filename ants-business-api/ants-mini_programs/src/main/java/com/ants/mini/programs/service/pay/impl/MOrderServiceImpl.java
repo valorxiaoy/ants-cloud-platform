@@ -94,7 +94,7 @@ public class MOrderServiceImpl implements IMOrderService {
         try {
             // TODO 将配置抽取到配置文件中
             DefaultMQProducer producer = new DefaultMQProducer("producer_group");
-            producer.setNamesrvAddr("192.168.80.208:9876");
+            producer.setNamesrvAddr("192.168.1.36:9876");
             producer.setRetryTimesWhenSendAsyncFailed(1);
             producer.start();
 
