@@ -5,7 +5,7 @@ import com.ants.module.order.OmsOrderDto;
 
 import java.util.List;
 
-public interface IMOrderService {
+public interface IOrderService {
 
     OmsOrderDto createOmsOrder(String storeId, String memberId, Integer sourceType, Integer orderType, List<MShoppingCartDto> shoppingCartDtos);
 

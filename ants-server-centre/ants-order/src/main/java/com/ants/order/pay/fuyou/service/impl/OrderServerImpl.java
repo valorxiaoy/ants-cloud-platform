@@ -79,7 +79,7 @@ public class OrderServerImpl implements IOrderServer {
             OmsOrder omsOrder = first.get();
 
             OmsOrderDto omsOrderDto = new OmsOrderDto();
-            BeanUtils.copyProperties(omsOrderDto, omsOrder);
+            BeanUtils.copyBeanProp(omsOrderDto, omsOrder);
 
             QueryWrapper<OmsOrderItem> omsOrderItemQueryWrapper = new QueryWrapper<>();
             omsOrderItemQueryWrapper.eq("order_sn", orderSn);

@@ -1,7 +1,7 @@
 package com.ants.mini.programs.controller.pay;
 
 import com.ants.mini.programs.dto.shopping.MShoppingCartDto;
-import com.ants.mini.programs.service.pay.IMOrderService;
+import com.ants.mini.programs.service.pay.IOrderService;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.tools.utils.CommonResult;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import java.util.List;
 public class MOrderController {
 
     @Autowired
-    private IMOrderService omsOrderService;
+    private IOrderService omsOrderService;
 
     /**
      * 创建订单

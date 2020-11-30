@@ -3,7 +3,7 @@ package com.ants.mini.programs.service.pay.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.ants.dubbo.api.service.order.IOrderServer;
 import com.ants.mini.programs.dto.shopping.MShoppingCartDto;
-import com.ants.mini.programs.service.pay.IMOrderService;
+import com.ants.mini.programs.service.pay.IOrderService;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.module.shopping.ShoppingCartDto;
@@ -22,7 +22,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class MOrderServiceImpl implements IMOrderService {
+public class OrderServiceImpl implements IOrderService {
 
     @DubboReference(loadbalance = "random", timeout = 1000)
     private IOrderServer orderServer;
