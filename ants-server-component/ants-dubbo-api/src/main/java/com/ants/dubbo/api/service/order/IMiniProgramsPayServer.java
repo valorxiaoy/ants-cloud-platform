@@ -1,5 +1,7 @@
 package com.ants.dubbo.api.service.order;
 
+import com.ants.module.order.OmsOrderDto;
+
 import java.util.Map;
 
 /**
@@ -9,6 +11,15 @@ import java.util.Map;
  * @create 2020-11-09 19:11
  **/
 public interface IMiniProgramsPayServer {
+
+    /**
+     * 创建预支付订单
+     *
+     * @return
+     * @throws Exception
+     */
+    Map<String, String> createPreOrderMap(String openId, OmsOrderDto omsOrderDto) throws Exception;
+
     /**
      * 预编译订单参数(富有支付)
      *
