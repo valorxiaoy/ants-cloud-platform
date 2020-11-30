@@ -7,7 +7,6 @@ import com.ants.mini.programs.service.pay.IMOrderService;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.module.shopping.ShoppingCartDto;
-import com.ants.tools.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -87,8 +86,8 @@ public class MOrderServiceImpl implements IMOrderService {
     /**
      * 发送创建订单任务
      *
-     * @param msg 下单JSON对象
-     * @throws BusinessException 业务异常
+     * @param msg           下单JSON对象
+     * @param notifyAddress 异步通知地址
      */
     private void omsOrderProducer(String msg, String notifyAddress) {
         try {
