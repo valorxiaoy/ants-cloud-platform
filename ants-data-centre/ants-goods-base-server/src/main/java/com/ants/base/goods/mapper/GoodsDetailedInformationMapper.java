@@ -5,9 +5,8 @@ import com.ants.base.goods.entity.GoodsDetailedInformation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * @author
- * @date 2020-05-25
+ * @author 小米
+ * @date 2020-11-19
  */
-public interface GoodDetailedInformationMapper extends BaseMapper<GoodsDetailedInformation> {
-
+public interface GoodsDetailedInformationMapper extends BaseMapper<GoodsDetailedInformation> {
 }

@@ -25,12 +25,12 @@ package com.ants.order.pay.fuyou.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.ants.dubbo.api.base.goods.IGoodsBrandService;
+import com.ants.dubbo.api.base.goods.IGoodsManagementService;
 import com.ants.dubbo.api.base.member.IMemberService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;
-import com.ants.module.goods.base.dto.GoodsBrandDto;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
+import com.ants.module.goods.base.dto.GoodsManagementDto;
 import com.ants.module.member.UmsMemberDto;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.module.order.OmsOrderItemDto;
@@ -59,7 +59,7 @@ import java.util.List;
 
 /**
  * 创建预支付订单
- *
+ * <p>
  * 流程简书
  * 1.0 创建订单
  * 1.1 检查参数
@@ -114,7 +114,7 @@ public class OrderCreateServerImpl {
     private IOrderIntegralService orderIntegralService;
 
     @DubboReference
-    private IGoodsBrandService goodsBrandService;
+    private IGoodsManagementService goodManagementService;
 
     @Autowired
     private OmsOrderMapper omsOrderMapper;
@@ -149,6 +149,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 检查购物车数据
+     *
      * @param value MQ-购物车数据
      * @return 购物车对象
      */
@@ -171,6 +172,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 根据门店ID查询门店信息
+     *
      * @param shoppingCartDto 购物车数据
      * @return 门店对象
      */
@@ -188,6 +190,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 根据门店ID查询总店数据
+     *
      * @param shoppingCartDto 购物车数据
      * @return 总店对象
      */
@@ -224,8 +227,9 @@ public class OrderCreateServerImpl {
 
     /**
      * 创建预支付订单
-     * @param sysStoreDto 门店数据
-     * @param umsMemberDto 会员数据
+     *
+     * @param sysStoreDto     门店数据
+     * @param umsMemberDto    会员数据
      * @param shoppingCartDto 购物车数据
      * @return 预支付订单
      */
@@ -414,7 +418,7 @@ public class OrderCreateServerImpl {
         goodsDetailedInformationDtoList.forEach(bean -> {
             // 获取商品品牌
             Integer goodsBrandsId = bean.getGoodBrandsId();
-            GoodsBrandDto goodsBrandDto = goodsBrandService.searchGoodsBrandByGoodsId(goodsBrandsId);
+            GoodsManagementDto goodsBrandDto = goodManagementService.searchGoodManagementById(goodsBrandsId);
 
             OmsOrderItemDto omsOrderItemDto = new OmsOrderItemDto();
             // 订单id
@@ -431,7 +435,7 @@ public class OrderCreateServerImpl {
             omsOrderItemDto.setProductSubheading(bean.getSubheading());
             // 商品品牌
             if (goodsBrandDto != null) {
-                omsOrderItemDto.setProductBrand(goodsBrandDto.getGoodBrand());
+                omsOrderItemDto.setProductBrand(goodsBrandDto.getName());
             }
             // 商品条码
             omsOrderItemDto.setProductSn(bean.getGoodTiaoCode());
@@ -487,6 +491,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 设置订单总金额&应付金额
+     *
      * @param omsOrderDto 订单数据
      */
     private void setTotalAmount(final OmsOrderDto omsOrderDto) {
@@ -506,6 +511,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 计算订单获得积分
+     *
      * @param omsOrderDto 订单数据
      */
     private void calculation(final OmsOrderDto omsOrderDto) {
@@ -518,6 +524,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 创建订单单号
+     *
      * @return 订单单号
      */
     private String createOrderSn() {
@@ -526,6 +533,7 @@ public class OrderCreateServerImpl {
 
     /**
      * 创建订单核销码
+     *
      * @param omsOrderDto 订单数据
      */
     private void createVerificationCode(final OmsOrderDto omsOrderDto) {
