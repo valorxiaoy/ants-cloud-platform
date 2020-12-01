@@ -5,7 +5,7 @@ import com.ants.base.goods.entity.GoodsPriceAdjustmentItem;
 import com.ants.base.goods.mapper.GoodsPriceAdjustmentItemMapper;
 import com.ants.base.goods.mapper.GoodsPriceAdjustmentMapper;
 import com.ants.dubbo.api.base.goods.IGoodsPriceAdjustmentService;
-import com.ants.module.goods.base.dto.GoodPriceAdjustmentDto;
+import com.ants.module.goods.base.dto.GoodsPriceAdjustmentDto;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
@@ -36,7 +36,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
     private GoodsPriceAdjustmentItemMapper goodPriceAdjustmentItemMapper;
 
     @Override
-    public List<GoodPriceAdjustmentDto> searchGoodPriceAdjustment(GoodPriceAdjustmentDto goodPriceAdjustmentDto) {
+    public List<GoodsPriceAdjustmentDto> searchGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto) {
         try {
             QueryWrapper<GoodsPriceAdjustment> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", goodPriceAdjustmentDto.getStoreId());
@@ -61,7 +61,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
                     //员工表
                 }
             });
-            List<GoodPriceAdjustmentDto> goodPriceAdjustmentDtos = BeanUtils.converteToDtoArray(list, GoodPriceAdjustmentDto.class);
+            List<GoodsPriceAdjustmentDto> goodPriceAdjustmentDtos = BeanUtils.converteToDtoArray(list, GoodsPriceAdjustmentDto.class);
             return goodPriceAdjustmentDtos;
         } catch (
                 BusinessException businessException) {
@@ -71,14 +71,14 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodPriceAdjustmentDto searchGoodPriceAdjustmentById(Integer id) {
+    public GoodsPriceAdjustmentDto searchGoodPriceAdjustmentById(Integer id) {
         try {
             GoodsPriceAdjustment goodPriceAdjustment = goodPriceAdjustmentMapper.selectById(id);
             if (goodPriceAdjustment == null) {
                 String exceptionMsg = String.format("商品调价单异常, 未找到商品调价单, 参数goodPriceAdjustment: %s", goodPriceAdjustment);
                 throw new BusinessException(exceptionMsg);
             }
-            GoodPriceAdjustmentDto goodPriceAdjustmentDto = new GoodPriceAdjustmentDto();
+            GoodsPriceAdjustmentDto goodPriceAdjustmentDto = new GoodsPriceAdjustmentDto();
             BeanUtils.copyProperties(goodPriceAdjustment, goodPriceAdjustmentDto);
             return goodPriceAdjustmentDto;
         } catch (BusinessException businessException) {
@@ -185,7 +185,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean deleteGoodPriceAdjustment(GoodPriceAdjustmentDto goodPriceAdjustmentDto) {
+    public boolean deleteGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto) {
         try {
             //删价格改价表
             QueryWrapper queryWrapper = new QueryWrapper();

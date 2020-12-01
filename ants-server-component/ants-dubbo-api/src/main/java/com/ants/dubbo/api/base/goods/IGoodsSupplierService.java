@@ -1,7 +1,7 @@
 package com.ants.dubbo.api.base.goods;
 
 
-import com.ants.module.goods.base.dto.GoodSupplierDto;
+import com.ants.module.goods.base.dto.GoodsSupplierDto;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface IGoodsSupplierService {
      * @param storeId
      * @return
      */
-    List<GoodSupplierDto> searchGoodSupplier(Integer storeId);
+    List<GoodsSupplierDto> searchGoodSupplier(Integer storeId);
 
     /**
      * 根据id 获取对象
@@ -25,7 +25,7 @@ public interface IGoodsSupplierService {
      * @param id
      * @return
      */
-    GoodSupplierDto searchGoodSupplierById(Integer id);
+    GoodsSupplierDto searchGoodSupplierById(Integer id);
 
     /**
      * 增加商品供应商
@@ -33,7 +33,7 @@ public interface IGoodsSupplierService {
      * @param goodSupplierDto
      * @return
      */
-    boolean createGoodSupplier(GoodSupplierDto goodSupplierDto);
+    boolean createGoodSupplier(GoodsSupplierDto goodSupplierDto);
 
     /**
      * 修改商品供应商
@@ -41,7 +41,7 @@ public interface IGoodsSupplierService {
      * @param goodSupplierDto
      * @return
      */
-    boolean updateGoodSupplier(GoodSupplierDto goodSupplierDto);
+    boolean updateGoodSupplier(GoodsSupplierDto goodSupplierDto);
 
     /**
      * 删除商品供应商
@@ -49,5 +49,5 @@ public interface IGoodsSupplierService {
      * @param goodSupplierDto
      * @return
      */
-    boolean deleteGoodSupplier(GoodSupplierDto goodSupplierDto);
+    boolean deleteGoodSupplier(GoodsSupplierDto goodSupplierDto);
 }

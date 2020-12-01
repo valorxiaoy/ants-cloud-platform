@@ -1,7 +1,7 @@
 package com.ants.dubbo.api.base.goods;
 
 
-import com.ants.module.goods.base.dto.GoodPriceAdjustmentDto;
+import com.ants.module.goods.base.dto.GoodsPriceAdjustmentDto;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public interface IGoodsPriceAdjustmentService {
      * @param goodPriceAdjustmentDto
      * @return
      */
-    List<GoodPriceAdjustmentDto> searchGoodPriceAdjustment(GoodPriceAdjustmentDto goodPriceAdjustmentDto);
+    List<GoodsPriceAdjustmentDto> searchGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto);
 
     /**
      * 根据id 获取对应的调整价格订单明细
@@ -26,7 +26,7 @@ public interface IGoodsPriceAdjustmentService {
      * @param id
      * @return
      */
-    GoodPriceAdjustmentDto searchGoodPriceAdjustmentById(Integer id);
+    GoodsPriceAdjustmentDto searchGoodPriceAdjustmentById(Integer id);
 
     /**
      * 新增调整价格单
@@ -52,5 +52,5 @@ public interface IGoodsPriceAdjustmentService {
      * @param goodPriceAdjustmentDto
      * @return
      */
-    boolean deleteGoodPriceAdjustment(GoodPriceAdjustmentDto goodPriceAdjustmentDto);
+    boolean deleteGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto);
 }

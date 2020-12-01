@@ -4,7 +4,7 @@ package com.ants.base.goods.service.impl;
 import com.ants.base.goods.entity.GoodsGrade;
 import com.ants.base.goods.mapper.GoodsGradeMapper;
 import com.ants.dubbo.api.base.goods.IGoodsGradeService;
-import com.ants.module.goods.base.dto.GoodGradeDto;
+import com.ants.module.goods.base.dto.GoodsGradeDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -29,13 +29,13 @@ public class GoodsGradeServiceImpl extends ServiceImpl
 
 
     @Override
-    public List<GoodGradeDto> searchGoodGrade(Integer storeId) {
+    public List<GoodsGradeDto> searchGoodGrade(Integer storeId) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper();
             queryWrapper.eq("is_delete", 0);
             queryWrapper.eq("store_id", storeId);
             List<GoodsGrade> list = goodGradeMapper.selectList(queryWrapper);
-            List<GoodGradeDto> goodGradeDtos = BeanUtils.converteToDtoArray(list, GoodGradeDto.class);
+            List<GoodsGradeDto> goodGradeDtos = BeanUtils.converteToDtoArray(list, GoodsGradeDto.class);
             return goodGradeDtos;
         } catch (BusinessException businessException) {
             businessException.printStackTrace();
@@ -44,7 +44,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodGradeDto searchGoodGradeById(Integer id) {
+    public GoodsGradeDto searchGoodGradeById(Integer id) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper();
             queryWrapper.eq("id", id);
@@ -53,7 +53,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
                 String exceptionMsg = String.format("商品等级异常, 未找到商品等级, 参数goodGradey: %s", goodGrade);
                 throw new BusinessException(exceptionMsg);
             }
-            GoodGradeDto goodGradeDto = new GoodGradeDto();
+            GoodsGradeDto goodGradeDto = new GoodsGradeDto();
             BeanUtils.copyProperties(goodGrade, goodGradeDto);
             return goodGradeDto;
         } catch (BusinessException businessException) {
@@ -63,7 +63,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean createGoodGrade(GoodGradeDto goodGradeDto) {
+    public boolean createGoodGrade(GoodsGradeDto goodGradeDto) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", goodGradeDto.getStoreId());
@@ -89,7 +89,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean updateGoodGrade(GoodGradeDto goodGradeDto) {
+    public boolean updateGoodGrade(GoodsGradeDto goodGradeDto) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", goodGradeDto.getStoreId());
@@ -115,7 +115,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean deleteGoodGrade(GoodGradeDto goodGradeDto) {
+    public boolean deleteGoodGrade(GoodsGradeDto goodGradeDto) {
         try {
             GoodsGrade goodGrade = new GoodsGrade();
             BeanUtils.copyProperties(goodGradeDto, goodGrade);

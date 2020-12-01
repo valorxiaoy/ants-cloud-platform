@@ -4,7 +4,7 @@ package com.ants.base.goods.service.impl;
 import com.ants.base.goods.entity.GoodsCompany;
 import com.ants.base.goods.mapper.GoodsCompanyMapper;
 import com.ants.dubbo.api.base.goods.IGoodsCompanyService;
-import com.ants.module.goods.base.dto.GoodCompanyDto;
+import com.ants.module.goods.base.dto.GoodsCompanyDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -29,13 +29,13 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
 
 
     @Override
-    public List<GoodCompanyDto> searchGoodCompany(Integer storeId) {
+    public List<GoodsCompanyDto> searchGoodCompany(Integer storeId) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", storeId);
             queryWrapper.eq("is_delete", 0);
             List<GoodsCompany> list = goodCompanyMapper.selectList(queryWrapper);
-            List<GoodCompanyDto> dtos = BeanUtils.converteToDtoArray(list, GoodCompanyDto.class);
+            List<GoodsCompanyDto> dtos = BeanUtils.converteToDtoArray(list, GoodsCompanyDto.class);
             return dtos;
         } catch (BusinessException businessException) {
             businessException.printStackTrace();
@@ -44,7 +44,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodCompanyDto searchGoodCompanyById(Integer id) {
+    public GoodsCompanyDto searchGoodCompanyById(Integer id) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("id", id);
@@ -53,7 +53,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
                 String exceptionMsg = String.format("商品单位异常, 未找到该单位, 参数goodCompany: %s", goodCompany);
                 throw new BusinessException(exceptionMsg);
             }
-            GoodCompanyDto goodCompanyDto = new GoodCompanyDto();
+            GoodsCompanyDto goodCompanyDto = new GoodsCompanyDto();
             BeanUtils.copyProperties(goodCompany, goodCompanyDto);
             return goodCompanyDto;
         } catch (BusinessException businessException) {
@@ -63,7 +63,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean createGoodCompany(GoodCompanyDto goodCompanyDto) {
+    public boolean createGoodCompany(GoodsCompanyDto goodCompanyDto) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper();
             queryWrapper.eq("store_id", goodCompanyDto.getStoreId());
@@ -89,7 +89,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean updateGoodCompany(GoodCompanyDto goodCompanyDto) {
+    public boolean updateGoodCompany(GoodsCompanyDto goodCompanyDto) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper();
             queryWrapper.eq("store_id", goodCompanyDto.getStoreId());
@@ -115,7 +115,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean deleteGoodCompany(GoodCompanyDto goodCompanyDto) {
+    public boolean deleteGoodCompany(GoodsCompanyDto goodCompanyDto) {
         try {
             GoodsCompany goodCompany = new GoodsCompany();
             BeanUtils.copyProperties(goodCompanyDto, goodCompany);

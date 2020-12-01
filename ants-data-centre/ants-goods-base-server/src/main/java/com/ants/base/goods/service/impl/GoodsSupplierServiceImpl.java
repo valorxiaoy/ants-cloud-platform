@@ -3,7 +3,7 @@ package com.ants.base.goods.service.impl;
 import com.ants.base.goods.entity.GoodsSupplier;
 import com.ants.base.goods.mapper.GoodsSupplierMapper;
 import com.ants.dubbo.api.base.goods.IGoodsSupplierService;
-import com.ants.module.goods.base.dto.GoodSupplierDto;
+import com.ants.module.goods.base.dto.GoodsSupplierDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -28,13 +28,13 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
 
 
     @Override
-    public List<GoodSupplierDto> searchGoodSupplier(Integer storeId) {
+    public List<GoodsSupplierDto> searchGoodSupplier(Integer storeId) {
         try {
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", storeId);
             queryWrapper.eq("is_delete", 0);
             List<GoodsSupplier> list = goodSupplierMapper.selectList(queryWrapper);
-            List<GoodSupplierDto> goodSupplierDtos = BeanUtils.converteToDtoArray(list, GoodSupplierDto.class);
+            List<GoodsSupplierDto> goodSupplierDtos = BeanUtils.converteToDtoArray(list, GoodsSupplierDto.class);
             return goodSupplierDtos;
         } catch (BusinessException businessException) {
             businessException.printStackTrace();
@@ -43,7 +43,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodSupplierDto searchGoodSupplierById(Integer id) {
+    public GoodsSupplierDto searchGoodSupplierById(Integer id) {
         try {
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("id", id);
@@ -52,7 +52,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
                 String exceptionMsg = String.format("供应商异常, 未找到该供应商, 参数goodSupplier: %s", goodSupplier);
                 throw new BusinessException(exceptionMsg);
             }
-            GoodSupplierDto goodSupplierDto = new GoodSupplierDto();
+            GoodsSupplierDto goodSupplierDto = new GoodsSupplierDto();
             BeanUtils.copyProperties(goodSupplier, goodSupplierDto);
             return goodSupplierDto;
         } catch (BusinessException businessException) {
@@ -62,7 +62,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean createGoodSupplier(GoodSupplierDto goodSupplierDto) {
+    public boolean createGoodSupplier(GoodsSupplierDto goodSupplierDto) {
         try {
             //校验
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
@@ -90,7 +90,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean updateGoodSupplier(GoodSupplierDto goodSupplierDto) {
+    public boolean updateGoodSupplier(GoodsSupplierDto goodSupplierDto) {
         try {
             //校验
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
@@ -118,7 +118,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean deleteGoodSupplier(GoodSupplierDto goodSupplierDto) {
+    public boolean deleteGoodSupplier(GoodsSupplierDto goodSupplierDto) {
         try {
             GoodsSupplier goodSupplier = new GoodsSupplier();
             BeanUtils.copyProperties(goodSupplierDto, goodSupplier);

@@ -1,7 +1,7 @@
 package com.ants.dubbo.api.base.goods;
 
 
-import com.ants.module.goods.base.dto.GoodCompanyDto;
+import com.ants.module.goods.base.dto.GoodsCompanyDto;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface IGoodsCompanyService {
      * @param storeId
      * @return
      */
-    List<GoodCompanyDto> searchGoodCompany(Integer storeId);
+    List<GoodsCompanyDto> searchGoodCompany(Integer storeId);
 
     /**
      * 根据id获取对应的对象
@@ -25,7 +25,7 @@ public interface IGoodsCompanyService {
      * @param id
      * @return
      */
-    GoodCompanyDto searchGoodCompanyById(Integer id);
+    GoodsCompanyDto searchGoodCompanyById(Integer id);
 
     /**
      * 增加商品单位
@@ -33,7 +33,7 @@ public interface IGoodsCompanyService {
      * @param goodCompanyDto
      * @return
      */
-    boolean createGoodCompany(GoodCompanyDto goodCompanyDto);
+    boolean createGoodCompany(GoodsCompanyDto goodCompanyDto);
 
     /**
      * 修改商品单位
@@ -41,7 +41,7 @@ public interface IGoodsCompanyService {
      * @param goodCompanyDto
      * @return
      */
-    boolean updateGoodCompany(GoodCompanyDto goodCompanyDto);
+    boolean updateGoodCompany(GoodsCompanyDto goodCompanyDto);
 
     /**
      * 删除商品单位
@@ -49,5 +49,5 @@ public interface IGoodsCompanyService {
      * @param goodCompanyDto
      * @return
      */
-    boolean deleteGoodCompany(GoodCompanyDto goodCompanyDto);
+    boolean deleteGoodCompany(GoodsCompanyDto goodCompanyDto);
 }

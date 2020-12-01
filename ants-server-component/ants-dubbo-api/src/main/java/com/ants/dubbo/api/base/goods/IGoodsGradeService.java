@@ -1,7 +1,7 @@
 package com.ants.dubbo.api.base.goods;
 
 
-import com.ants.module.goods.base.dto.GoodGradeDto;
+import com.ants.module.goods.base.dto.GoodsGradeDto;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface IGoodsGradeService {
      * @param storeId
      * @return
      */
-    List<GoodGradeDto> searchGoodGrade(Integer storeId);
+    List<GoodsGradeDto> searchGoodGrade(Integer storeId);
 
     /**
      * 根据id 获取该对象
@@ -25,7 +25,7 @@ public interface IGoodsGradeService {
      * @param id
      * @return
      */
-    GoodGradeDto searchGoodGradeById(Integer id);
+    GoodsGradeDto searchGoodGradeById(Integer id);
 
     /**
      * 增加商品等级
@@ -33,7 +33,7 @@ public interface IGoodsGradeService {
      * @param goodGradeDto
      * @return
      */
-    boolean createGoodGrade(GoodGradeDto goodGradeDto);
+    boolean createGoodGrade(GoodsGradeDto goodGradeDto);
 
     /**
      * 修改商品等级
@@ -41,7 +41,7 @@ public interface IGoodsGradeService {
      * @param goodGradeDto
      * @return
      */
-    boolean updateGoodGrade(GoodGradeDto goodGradeDto);
+    boolean updateGoodGrade(GoodsGradeDto goodGradeDto);
 
     /**
      * 删除商品等级
@@ -49,5 +49,5 @@ public interface IGoodsGradeService {
      * @param goodGradeDto
      * @return
      */
-    boolean deleteGoodGrade(GoodGradeDto goodGradeDto);
+    boolean deleteGoodGrade(GoodsGradeDto goodGradeDto);
 }
