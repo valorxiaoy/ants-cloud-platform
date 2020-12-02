@@ -2,7 +2,7 @@ package com.ants.activity.service.impl;
 
 import com.ants.activity.entity.SmsCouponHistory;
 import com.ants.activity.mapper.SmsCouponHistoryMapper;
-import com.ants.dubbo.api.base.member.IMemberService;
+import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.service.activity.IMatchingSmsCouponService;
 import com.ants.module.activity.SmsCouponHistoryDto;
 import com.ants.module.constant.ActivityConstant;
@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class MatchingSmsCouponServiceImpl implements IMatchingSmsCouponService {
 
     @DubboReference
-    private IMemberService memberService;
+    private IMemberBaseService memberService;
 
     @Autowired
     private SmsCouponHistoryMapper smsCouponHistoryMapper;

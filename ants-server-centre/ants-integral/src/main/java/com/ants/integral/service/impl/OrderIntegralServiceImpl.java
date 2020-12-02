@@ -1,7 +1,7 @@
 package com.ants.integral.service.impl;
 
 import com.ants.dubbo.api.base.goods.IGoodsBaseInfoService;
-import com.ants.dubbo.api.base.member.IMemberService;
+import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;
 import com.ants.integral.entity.IntegralRule;
@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 public class OrderIntegralServiceImpl implements IOrderIntegralService {
 
     @DubboReference
-    private IMemberService memberService;
+    private IMemberBaseService memberService;
 
     @DubboReference
     private IGoodsBaseInfoService iGoodsBaseInfoService;

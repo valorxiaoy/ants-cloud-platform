@@ -26,7 +26,7 @@ package com.ants.order.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.ants.dubbo.api.base.goods.IGoodsManagementService;
-import com.ants.dubbo.api.base.member.IMemberService;
+import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;
 import com.ants.module.goods.base.dto.GoodsDetailedInformationDto;
@@ -110,7 +110,7 @@ public class OrderCreateServerImpl {
     private IStoreService storeService;
 
     @DubboReference
-    private IMemberService memberService;
+    private IMemberBaseService memberService;
 
     @DubboReference
     private IOrderIntegralService orderIntegralService;

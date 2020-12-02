@@ -4,7 +4,7 @@ import com.ants.base.member.entity.UmsMember;
 import com.ants.base.member.entity.UmsMemberLevel;
 import com.ants.base.member.mapper.UmsMemberLevelMapper;
 import com.ants.base.member.mapper.UmsMemberMapper;
-import com.ants.dubbo.api.base.member.IMemberService;
+import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.module.member.UmsMemberDto;
 import com.ants.module.member.UmsMemberLevelDto;
 import com.ants.tools.exception.BusinessException;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  **/
 @Slf4j
 @DubboService
-public class MemberServiceImpl implements IMemberService {
+public class MemberServiceImpl implements IMemberBaseService {
 
     @Autowired
     private UmsMemberMapper umsMemberMapper;
@@ -52,5 +52,12 @@ public class MemberServiceImpl implements IMemberService {
         UmsMemberLevelDto umsMemberLevelDto = new UmsMemberLevelDto();
         BeanUtils.copyBeanProp(umsMemberLevelDto, umsMemberLevel);
         return umsMemberLevelDto;
+    }
+
+    @Override
+    public boolean updateUmsMember(UmsMemberDto umsMemberDto) {
+        UmsMember umsMember = new UmsMember();
+        BeanUtils.copyBeanProp(umsMember, umsMemberDto);
+        return umsMemberMapper.updateById(umsMember) > 0;
     }
 }
