@@ -1,7 +1,7 @@
 package com.ants.pay.fy.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ants.dubbo.api.service.order.IMiniProgramsPayServer;
+import com.ants.dubbo.api.service.pay.IMiniProgramsPayServer;
 import com.ants.module.order.OmsOrderDto;
 import com.ants.pay.fy.config.FyPayParams;
 import com.ants.pay.fy.constant.FyPayConstant;

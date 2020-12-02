@@ -22,6 +22,7 @@
         <module>ants-data-analysis</module>
         <module>ants-activity</module>
         <module>ants-integral</module>
+        <module>ants-pay</module>
     </modules>
 
 
