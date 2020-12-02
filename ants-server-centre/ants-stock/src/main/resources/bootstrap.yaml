@@ -1,0 +1,22 @@
+dubbo:
+  scan:
+    base-packages: com.ants.stock.service.impl
+  protocol:
+    name: dubbo
+    port: -1
+  cloud:
+    subscribed-services: ants-goods-base-server, ants-member-base-server, ants-store-base-server, ants-integral, ants-activity
+
+spring:
+  application:
+    name: ants-stock
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 192.168.1.36:9876
+    nacos:
+      discovery:
+        server-addr: 192.168.1.36:8848
