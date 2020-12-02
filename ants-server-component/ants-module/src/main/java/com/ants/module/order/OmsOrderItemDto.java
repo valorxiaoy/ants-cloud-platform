@@ -42,7 +42,9 @@ public class OmsOrderItemDto implements Serializable {
     private String productSubheading;
 
     private String productBrand;
-
+    /**
+     * 商品条码
+     */
     private String productSn;
 
     /**

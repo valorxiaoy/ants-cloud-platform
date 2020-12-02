@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,9 +34,13 @@ public class GoodsBaseInfoServiceImpl implements IGoodsBaseInfoService {
         BeanUtils.copyBeanProp(goodsDetailedInformationDto, goodsDetailedInformation);
         return goodsDetailedInformationDto;
     }
-
-    public GoodsDetailedInformationDto batchSearchOfGoods(List<String> productSnList) {
-        //goodsDetailedInformationMapper.s
-        return null;
+    @Override
+    public List<GoodsDetailedInformationDto> batchSearchOfGoods(List<String> productSnList, String storeId) {
+        QueryWrapper<GoodsDetailedInformation> goodsDetailedInformationQueryWrapper = new QueryWrapper<>();
+        goodsDetailedInformationQueryWrapper.in("good_tiao_code", productSnList);
+        goodsDetailedInformationQueryWrapper.eq("store_id", storeId);
+        List<GoodsDetailedInformation> goodsDetailedInformations = goodsDetailedInformationMapper.selectList(goodsDetailedInformationQueryWrapper);
+        List<GoodsDetailedInformationDto> goodsDetailedInformationDtos = BeanUtils.converteToDtoArray(goodsDetailedInformations, GoodsDetailedInformationDto.class);
+        return goodsDetailedInformationDtos;
     }
 }
