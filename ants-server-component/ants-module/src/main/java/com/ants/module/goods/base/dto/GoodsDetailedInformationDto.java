@@ -346,4 +346,36 @@ public class GoodsDetailedInformationDto extends BaseDto {
      * 所需积分
      */
     private Integer integral;
+    /**
+     * 单位
+     */
+    private String goodCompay;
+    /**
+     * 供应商
+     */
+    private String goodSuppliers;
+    /**
+     * 类别
+     */
+    private String goodCategos;
+    /**
+     * 品牌
+     */
+    private String goodBrand;
+    /**
+     * 系列
+     */
+    private String goodTable;
+    /**
+     * 门店id
+     */
+    private Integer storeId;
+
+    private String keyword;
+    /**
+     * 是否删除 0否 1是
+     */
+    private Integer isDelete;
+
+    private String name;
 }

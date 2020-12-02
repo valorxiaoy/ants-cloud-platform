@@ -1,9 +1,9 @@
 server:
-  port: 10005
+  port: 21000
 
 dubbo:
   scan:
-    base-packages: com.ants.order.service.impl
+    base-packages: com.ants.pay.fy.service.impl
   protocol:
     name: dubbo
     port: -1
@@ -41,7 +41,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
-  typeAliasesPackage: com.ants.order.entity
+  typeAliasesPackage: com.ants.pay.fy.entity
   global-config:
     db-config:
       id-type: id_worker

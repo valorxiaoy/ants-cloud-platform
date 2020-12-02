@@ -1,18 +1,21 @@
 package com.ants.base.goods.entity;
 
+import lombok.Data;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
 
-import java.io.Serializable;
+import java.util.Date;
+
+
 import java.math.BigDecimal;
+import java.io.Serializable;
 
 /**
- * @author xiaomi
- * @date 2020-06-05
- * 商品明细
+ * @author 小米
+ * @date 2020-11-19
+ * 商品表
  */
 @Data
 @TableName("good_detailed_information")
@@ -71,11 +74,13 @@ public class GoodsDetailedInformation implements Serializable {
     @TableField("good_company_id")
     private Integer goodCompanyId;
 
+
     /**
      * 供应商id
      **/
     @TableField("good_supplier_id")
     private Integer goodSupplierId;
+
 
     /**
      * 商品等级id
@@ -110,6 +115,13 @@ public class GoodsDetailedInformation implements Serializable {
      **/
     @TableField("gross_margin")
     private BigDecimal grossMargin;
+
+
+    /**
+     * 前端会员价传参
+     **/
+    @TableField("vip_money")
+    private BigDecimal vipMoney;
 
 
     /**
@@ -169,10 +181,17 @@ public class GoodsDetailedInformation implements Serializable {
 
 
     /**
+     * 会员价或者百分比 0会员价 1百分比
+     **/
+    @TableField("pice_or_percentage")
+    private Integer piceOrPercentage;
+
+
+    /**
      * 会员百分比
      **/
     @TableField("vip_percentage")
-    private String vipPercentage;
+    private Double vipPercentage;
 
 
     /**
@@ -197,7 +216,14 @@ public class GoodsDetailedInformation implements Serializable {
 
 
     /**
-     * 商品详情
+     * 商品主图
+     **/
+    @TableField("goods_main_picture")
+    private String goodsMainPicture;
+
+
+    /**
+     * 商品图片
      **/
     @TableField("good_detailed")
     private String goodDetailed;
@@ -228,14 +254,14 @@ public class GoodsDetailedInformation implements Serializable {
      * 开始时间
      **/
     @TableField("start_time")
-    private String startTime;
+    private Date startTime;
 
 
     /**
      * 结束时间
      **/
     @TableField("end_time")
-    private String endTime;
+    private Date endTime;
 
 
     /**
@@ -249,7 +275,7 @@ public class GoodsDetailedInformation implements Serializable {
      * 创建时间
      **/
     @TableField("create_time")
-    private String createTime;
+    private Date createTime;
 
 
     /**
@@ -314,93 +340,138 @@ public class GoodsDetailedInformation implements Serializable {
     @TableField("part")
     private Integer part;
 
+
     /**
      * 品牌路径
      **/
     @TableField("paths")
     private String paths;
+
+
     /**
      * 商品产地
-     */
+     **/
     @TableField("good_address")
     private String goodAddress;
 
+
     /**
      * 适用年龄
-     */
+     **/
     @TableField("use_age")
     private String useAge;
+
+
     /**
      * 改后进货价
-     */
+     **/
     @TableField("good_inprice_set")
     private BigDecimal goodInpriceSet;
+
+
     /**
      * 改后零售价
-     */
+     **/
     @TableField("retail_price_set")
     private BigDecimal retailPriceSet;
+
+
     /**
      * 改后最低价
-     */
+     **/
     @TableField("lower_price_set")
     private BigDecimal lowerPriceSet;
+
+
     /**
      * 改后会员价
      **/
     @TableField("vip_price_set")
     private BigDecimal vipPriceSet;
+
+
     /**
      * 改后批发价
-     */
+     **/
     @TableField("wholesale_price_set")
     private BigDecimal wholesalePriceSet;
+
+
     /**
-     * 调价单号
-     */
+     * 调价单号id
+     **/
     @TableField("price_adjustment_id")
     private Integer priceAdjustmentId;
 
+
     /**
      * 是否为新品，0否，1是
-     */
+     **/
     @TableField("new_commodity")
-    private Integer newcommodity;
+    private Integer newCommodity;
+
 
     /**
      * 是否为人气商品，0否，1是
-     */
+     **/
     @TableField("popularity_commodity")
-    private Integer popularitycommodity;
+    private Integer popularityCommodity;
 
-    /*
-    商品副标题
-     */
+
+    /**
+     * 商品副标题
+     **/
     @TableField("subheading")
     private String subheading;
 
-    /*
-    类别
-     */
-    @TableField("good_categos_id")
-    private int goodCategosId;
-
-    /*
-    品牌
-     */
-    @TableField("good_brands_id")
-    private int goodBrandsId;
-
-    /*
-    系列
-     */
-    @TableField("goods_tables_id")
-    private int goodsTablesId;
 
     /**
-     * 产品销量
-     */
-    @TableField(exist = false)
-    private Integer salesVolume = 0;
+     * 所属门店id
+     **/
+    @TableField("store_id")
+    private Integer storeId;
+
+
+    /**
+     * 商品来源 0 本店录入 1外店调入
+     **/
+    @TableField("goods_source")
+    private Integer goodsSource;
+
+
+    /**
+     * 类别
+     **/
+    @TableField("good_categos_id")
+    private Integer goodCategosId;
+
+
+    /**
+     * 品牌
+     **/
+    @TableField("good_brands_id")
+    private Integer goodBrandsId;
+
+
+    /**
+     * 系列
+     **/
+    @TableField("goods_tables_id")
+    private Integer goodsTablesId;
+
+
+    /**
+     * 商户id
+     **/
+    @TableField("business_id")
+    private Integer businessId;
+
+
+    /**
+     * 是否删除 0否 1是
+     **/
+    @TableField("is_delete")
+    private Integer isDelete;
+
 
 }

@@ -1,7 +1,9 @@
 package com.ants.module.goods.base.dto;
 
 import com.ants.module.BaseDto;
+import lombok.Data;
 
+@Data
 public class GoodsManagementDto extends BaseDto {
 
     private Integer id;
