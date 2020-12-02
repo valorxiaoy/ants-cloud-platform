@@ -65,7 +65,6 @@ public class MemberServiceImpl implements IMemberBaseService {
             }
             UmsMember umsMember = new UmsMember();
             BeanUtils.copyBeanProp(umsMember, umsMemberDto);
-
             return umsMemberMapper.updateById(umsMember) > 0;
         } catch (BusinessException businessException) {
             String exceptionMsg = String.format("根据传入会员修改会员对象, 修改会员对象错误, 参数umsMemberDto : %s", umsMemberDto);
