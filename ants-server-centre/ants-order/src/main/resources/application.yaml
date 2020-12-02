@@ -3,7 +3,7 @@ server:
 
 dubbo:
   scan:
-    base-packages: com.ants.order.pay.fuyou.service.impl
+    base-packages: com.ants.order.service.impl
   protocol:
     name: dubbo
     port: -1
@@ -41,7 +41,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
-  typeAliasesPackage: com.ants.order.pay.fuyou.entity
+  typeAliasesPackage: com.ants.order.entity
   global-config:
     db-config:
       id-type: id_worker

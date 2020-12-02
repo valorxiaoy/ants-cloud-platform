@@ -1,6 +1,6 @@
 dubbo:
   scan:
-    base-packages: com.ants.order.pay.fuyou.service.impl
+    base-packages: com.ants.order.service.impl
   protocol:
     name: dubbo
     port: -1
