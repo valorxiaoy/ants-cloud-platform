@@ -12,6 +12,7 @@ import com.ants.tools.utils.BeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 会员信息服务
@@ -55,9 +56,21 @@ public class MemberServiceImpl implements IMemberBaseService {
     }
 
     @Override
+    @Transactional(rollbackFor = BusinessException.class)
     public boolean updateUmsMember(UmsMemberDto umsMemberDto) {
-        UmsMember umsMember = new UmsMember();
-        BeanUtils.copyBeanProp(umsMember, umsMemberDto);
-        return umsMemberMapper.updateById(umsMember) > 0;
+        try {
+            if (umsMemberDto == null) {
+                String exceptionMsg = String.format("根据传入会员修改会员对象, 修改会员对象为空, 参数umsMemberDto : %s", umsMemberDto);
+                log.error(exceptionMsg);
+            }
+            UmsMember umsMember = new UmsMember();
+            BeanUtils.copyBeanProp(umsMember, umsMemberDto);
+
+            return umsMemberMapper.updateById(umsMember) > 0;
+        } catch (BusinessException businessException) {
+            String exceptionMsg = String.format("根据传入会员修改会员对象, 修改会员对象错误, 参数umsMemberDto : %s", umsMemberDto);
+            log.error(exceptionMsg);
+            throw businessException;
+        }
     }
 }
