@@ -17,7 +17,7 @@ public interface IGoodsGradeService {
      * @param storeId
      * @return
      */
-    List<GoodsGradeDto> searchGoodGrade(Integer storeId);
+    List<GoodsGradeDto> searchGoodsGradeByStoreId(Integer storeId);
 
     /**
      * 根据id 获取该对象
@@ -25,7 +25,7 @@ public interface IGoodsGradeService {
      * @param id
      * @return
      */
-    GoodsGradeDto searchGoodGradeById(Integer id);
+    GoodsGradeDto searchGoodsGradeById(Integer id);
 
     /**
      * 增加商品等级
@@ -33,7 +33,7 @@ public interface IGoodsGradeService {
      * @param goodGradeDto
      * @return
      */
-    boolean createGoodGrade(GoodsGradeDto goodGradeDto);
+    boolean createGoodsGradeByStoreId(GoodsGradeDto goodGradeDto);
 
     /**
      * 修改商品等级
@@ -41,13 +41,13 @@ public interface IGoodsGradeService {
      * @param goodGradeDto
      * @return
      */
-    boolean updateGoodGrade(GoodsGradeDto goodGradeDto);
+    boolean updateGoodsGradeByStoreId(GoodsGradeDto goodGradeDto);
 
     /**
      * 删除商品等级
      *
-     * @param goodGradeDto
+     * @param id
      * @return
      */
-    boolean deleteGoodGrade(GoodsGradeDto goodGradeDto);
+    boolean deleteGoodsGradeById(Integer id);
 }

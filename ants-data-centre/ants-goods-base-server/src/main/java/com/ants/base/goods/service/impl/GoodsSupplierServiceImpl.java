@@ -28,7 +28,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
 
 
     @Override
-    public List<GoodsSupplierDto> searchGoodSupplier(Integer storeId) {
+    public List<GoodsSupplierDto> searchGoodsSupplierByStoreId(Integer storeId) {
         try {
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", storeId);
@@ -43,7 +43,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodsSupplierDto searchGoodSupplierById(Integer id) {
+    public GoodsSupplierDto searchGoodsSupplierById(Integer id) {
         try {
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("id", id);
@@ -62,7 +62,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean createGoodSupplier(GoodsSupplierDto goodSupplierDto) {
+    public boolean createGoodsSupplierByStoreId(GoodsSupplierDto goodSupplierDto) {
         try {
             //校验
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
@@ -90,7 +90,7 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean updateGoodSupplier(GoodsSupplierDto goodSupplierDto) {
+    public boolean updateGoodsSupplierByStoreId(GoodsSupplierDto goodSupplierDto) {
         try {
             //校验
             QueryWrapper<GoodsSupplier> queryWrapper = new QueryWrapper<>();
@@ -118,10 +118,10 @@ public class GoodsSupplierServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean deleteGoodSupplier(GoodsSupplierDto goodSupplierDto) {
+    public boolean deleteGoodsSupplierById(Integer id) {
         try {
             GoodsSupplier goodSupplier = new GoodsSupplier();
-            BeanUtils.copyProperties(goodSupplierDto, goodSupplier);
+            goodSupplier.setId(id);
             goodSupplier.setIsDelete(1);
             if (goodSupplierMapper.updateById(goodSupplier) < 0) {
                 String exceptionMsg = String.format("商品供应商异常, 供应商删除失败, 参数goodSupplier: %s", goodSupplier);

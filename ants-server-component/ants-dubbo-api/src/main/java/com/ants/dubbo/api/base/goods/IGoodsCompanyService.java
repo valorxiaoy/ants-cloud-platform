@@ -17,7 +17,7 @@ public interface IGoodsCompanyService {
      * @param storeId
      * @return
      */
-    List<GoodsCompanyDto> searchGoodCompany(Integer storeId);
+    List<GoodsCompanyDto> searchGoodsCompanyByStoreId(Integer storeId);
 
     /**
      * 根据id获取对应的对象
@@ -25,7 +25,7 @@ public interface IGoodsCompanyService {
      * @param id
      * @return
      */
-    GoodsCompanyDto searchGoodCompanyById(Integer id);
+    GoodsCompanyDto searchGoodsCompanyById(Integer id);
 
     /**
      * 增加商品单位
@@ -33,7 +33,7 @@ public interface IGoodsCompanyService {
      * @param goodCompanyDto
      * @return
      */
-    boolean createGoodCompany(GoodsCompanyDto goodCompanyDto);
+    boolean createGoodsCompanyByStoreId(GoodsCompanyDto goodCompanyDto);
 
     /**
      * 修改商品单位
@@ -41,13 +41,13 @@ public interface IGoodsCompanyService {
      * @param goodCompanyDto
      * @return
      */
-    boolean updateGoodCompany(GoodsCompanyDto goodCompanyDto);
+    boolean updateGoodsCompanyByStoreId(GoodsCompanyDto goodCompanyDto);
 
     /**
      * 删除商品单位
      *
-     * @param goodCompanyDto
+     * @param id
      * @return
      */
-    boolean deleteGoodCompany(GoodsCompanyDto goodCompanyDto);
+    boolean deleteGoodsCompanyById(Integer id);
 }

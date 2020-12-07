@@ -36,7 +36,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
     private GoodsPriceAdjustmentItemMapper goodPriceAdjustmentItemMapper;
 
     @Override
-    public List<GoodsPriceAdjustmentDto> searchGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto) {
+    public List<GoodsPriceAdjustmentDto> searchGoodsPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto) {
         try {
             QueryWrapper<GoodsPriceAdjustment> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", goodPriceAdjustmentDto.getStoreId());
@@ -71,7 +71,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodsPriceAdjustmentDto searchGoodPriceAdjustmentById(Integer id) {
+    public GoodsPriceAdjustmentDto searchGoodsPriceAdjustmentById(Integer id) {
         try {
             GoodsPriceAdjustment goodPriceAdjustment = goodPriceAdjustmentMapper.selectById(id);
             if (goodPriceAdjustment == null) {
@@ -89,7 +89,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean createGoodPriceAdjustment(List<GoodsDetailedInformationDto> list, Integer storeId) {
+    public boolean createGoodsPriceAdjustmentByStoreId(List<GoodsDetailedInformationDto> list, Integer storeId) {
         try {
             SimpleDateFormat time = new SimpleDateFormat("yyyyMMddHHmmssSSS");
             //生成的入库单号
@@ -136,7 +136,7 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean updateGoodPriceAdjustment(List<GoodsDetailedInformationDto> list, String orderSn, Integer storeId) {
+    public boolean updateGoodsPriceAdjustmentByStoreId(List<GoodsDetailedInformationDto> list, String orderSn, Integer storeId) {
         try {
             //存大表
             GoodsPriceAdjustment goodPriceAdjustment = new GoodsPriceAdjustment();
@@ -185,17 +185,17 @@ public class GoodsPriceAdjustmentServiceImpl extends ServiceImpl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean deleteGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto) {
+    public boolean deleteGoodsPriceAdjustmentByOrderSn(String orderSn) {
         try {
             //删价格改价表
             QueryWrapper queryWrapper = new QueryWrapper();
-            queryWrapper.eq("order_id", goodPriceAdjustmentDto.getOrderId());
+            queryWrapper.eq("order_id", orderSn);
             if (goodPriceAdjustmentMapper.delete(queryWrapper) < 0) {
-                String exceptionMsg = String.format("商品调价单异常, 商品调价单删除失败, 参数order_id: %s", goodPriceAdjustmentDto.getOrderId());
+                String exceptionMsg = String.format("商品调价单异常, 商品调价单删除失败, 参数order_id: %s", orderSn);
                 throw new BusinessException(exceptionMsg);
             }
             if (goodPriceAdjustmentItemMapper.delete(queryWrapper) < 0) {
-                String exceptionMsg = String.format("商品调价单异常, 商品调价单明细删除失败, 参数order_id: %s", goodPriceAdjustmentDto.getOrderId());
+                String exceptionMsg = String.format("商品调价单异常, 商品调价单明细删除失败, 参数order_id: %s", orderSn);
                 throw new BusinessException(exceptionMsg);
             }
             return true;

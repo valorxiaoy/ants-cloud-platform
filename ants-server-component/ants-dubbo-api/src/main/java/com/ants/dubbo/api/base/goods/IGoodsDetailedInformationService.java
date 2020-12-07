@@ -17,7 +17,15 @@ public interface IGoodsDetailedInformationService {
      * @param goodsDetailedInformationDto
      * @return
      */
-    List<GoodsDetailedInformationDto> searchGoodDetailedInformationsByCondition(GoodsDetailedInformationDto goodsDetailedInformationDto);
+    List<GoodsDetailedInformationDto> searchGoodsDetailedInformationsByCondition(GoodsDetailedInformationDto goodsDetailedInformationDto);
+
+    /**
+     * 根据id获取对象
+     *
+     * @param id
+     * @return
+     */
+    GoodsDetailedInformationDto searchGoodsDetailedInformationsById(Integer id);
 
     /**
      * 添加商品
@@ -25,23 +33,24 @@ public interface IGoodsDetailedInformationService {
      * @param goodsDetailedInformationDto
      * @return
      */
-    boolean createGoodDetailedInformation(GoodsDetailedInformationDto goodsDetailedInformationDto);
+    boolean createGoodsDetailedInformationByStoreId(GoodsDetailedInformationDto goodsDetailedInformationDto);
 
     /**
      * 修改商品
+     * 作用1-线上商品（上架 ，下架）
      *
      * @param goodsDetailedInformationDto
      * @return
      */
-    boolean updateGoodDetailedInformations(GoodsDetailedInformationDto goodsDetailedInformationDto);
+    boolean updateGoodsDetailedInformationsByStoreId(GoodsDetailedInformationDto goodsDetailedInformationDto);
 
     /**
      * 删除商品
      *
-     * @param goodsDetailedInformationDto
+     * @param id
      * @return
      */
-    boolean deleteGoodDetailedInformations(GoodsDetailedInformationDto goodsDetailedInformationDto);
+    boolean deleteGoodsDetailedInformationsById(Integer id);
 
     /**
      * 批量修改商品
@@ -49,5 +58,6 @@ public interface IGoodsDetailedInformationService {
      * @param list
      * @return
      */
-    boolean batchUpdateGoodDetailedInformations(List<GoodsDetailedInformationDto> list);
+    boolean batchUpdateGoodsDetailedInformationsByStoreId(List<GoodsDetailedInformationDto> list);
+
 }

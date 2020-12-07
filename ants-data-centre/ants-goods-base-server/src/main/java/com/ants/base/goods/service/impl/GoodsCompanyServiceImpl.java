@@ -29,7 +29,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
 
 
     @Override
-    public List<GoodsCompanyDto> searchGoodCompany(Integer storeId) {
+    public List<GoodsCompanyDto> searchGoodsCompanyByStoreId(Integer storeId) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", storeId);
@@ -44,7 +44,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodsCompanyDto searchGoodCompanyById(Integer id) {
+    public GoodsCompanyDto searchGoodsCompanyById(Integer id) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("id", id);
@@ -63,7 +63,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean createGoodCompany(GoodsCompanyDto goodCompanyDto) {
+    public boolean createGoodsCompanyByStoreId(GoodsCompanyDto goodCompanyDto) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper();
             queryWrapper.eq("store_id", goodCompanyDto.getStoreId());
@@ -89,7 +89,7 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean updateGoodCompany(GoodsCompanyDto goodCompanyDto) {
+    public boolean updateGoodsCompanyByStoreId(GoodsCompanyDto goodCompanyDto) {
         try {
             QueryWrapper<GoodsCompany> queryWrapper = new QueryWrapper();
             queryWrapper.eq("store_id", goodCompanyDto.getStoreId());
@@ -115,10 +115,10 @@ public class GoodsCompanyServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean deleteGoodCompany(GoodsCompanyDto goodCompanyDto) {
+    public boolean deleteGoodsCompanyById(Integer id) {
         try {
             GoodsCompany goodCompany = new GoodsCompany();
-            BeanUtils.copyProperties(goodCompanyDto, goodCompany);
+            goodCompany.setId(id);
             goodCompany.setIsDelete(1);
             if (goodCompanyMapper.updateById(goodCompany) < 0) {
                 String exceptionMsg = String.format("商单位异常, 单位删除失败, 参数goodCompany: %s", goodCompany);

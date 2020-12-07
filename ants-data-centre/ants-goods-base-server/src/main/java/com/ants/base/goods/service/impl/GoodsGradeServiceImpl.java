@@ -29,7 +29,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
 
 
     @Override
-    public List<GoodsGradeDto> searchGoodGrade(Integer storeId) {
+    public List<GoodsGradeDto> searchGoodsGradeByStoreId(Integer storeId) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper();
             queryWrapper.eq("is_delete", 0);
@@ -44,7 +44,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public GoodsGradeDto searchGoodGradeById(Integer id) {
+    public GoodsGradeDto searchGoodsGradeById(Integer id) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper();
             queryWrapper.eq("id", id);
@@ -63,7 +63,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean createGoodGrade(GoodsGradeDto goodGradeDto) {
+    public boolean createGoodsGradeByStoreId(GoodsGradeDto goodGradeDto) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", goodGradeDto.getStoreId());
@@ -89,7 +89,7 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean updateGoodGrade(GoodsGradeDto goodGradeDto) {
+    public boolean updateGoodsGradeByStoreId(GoodsGradeDto goodGradeDto) {
         try {
             QueryWrapper<GoodsGrade> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("store_id", goodGradeDto.getStoreId());
@@ -115,10 +115,10 @@ public class GoodsGradeServiceImpl extends ServiceImpl
     }
 
     @Override
-    public boolean deleteGoodGrade(GoodsGradeDto goodGradeDto) {
+    public boolean deleteGoodsGradeById(Integer id) {
         try {
             GoodsGrade goodGrade = new GoodsGrade();
-            BeanUtils.copyProperties(goodGradeDto, goodGrade);
+            goodGrade.setId(id);
             goodGrade.setIsDelete(1);
             if (goodGradeMapper.updateById(goodGrade) < 0) {
                 String exceptionMsg = String.format("商品等级异常, 等级删除失败, 参数goodGrade: %s", goodGrade);

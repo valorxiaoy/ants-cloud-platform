@@ -18,7 +18,7 @@ public interface IGoodsPriceAdjustmentService {
      * @param goodPriceAdjustmentDto
      * @return
      */
-    List<GoodsPriceAdjustmentDto> searchGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto);
+    List<GoodsPriceAdjustmentDto> searchGoodsPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto);
 
     /**
      * 根据id 获取对应的调整价格订单明细
@@ -26,7 +26,7 @@ public interface IGoodsPriceAdjustmentService {
      * @param id
      * @return
      */
-    GoodsPriceAdjustmentDto searchGoodPriceAdjustmentById(Integer id);
+    GoodsPriceAdjustmentDto searchGoodsPriceAdjustmentById(Integer id);
 
     /**
      * 新增调整价格单
@@ -35,22 +35,23 @@ public interface IGoodsPriceAdjustmentService {
      * @param storeId
      * @return
      */
-    boolean createGoodPriceAdjustment(List<GoodsDetailedInformationDto> list, Integer storeId);
+    boolean createGoodsPriceAdjustmentByStoreId(List<GoodsDetailedInformationDto> list, Integer storeId);
 
     /**
      * 修改调整价格单
+     *
      * @param orderSn
      * @param list
      * @param storeId
      * @return
      */
-    boolean updateGoodPriceAdjustment(List<GoodsDetailedInformationDto> list, String orderSn,Integer storeId);
+    boolean updateGoodsPriceAdjustmentByStoreId(List<GoodsDetailedInformationDto> list, String orderSn, Integer storeId);
 
     /**
      * 删除调整价格单
      *
-     * @param goodPriceAdjustmentDto
+     * @param orderSn
      * @return
      */
-    boolean deleteGoodPriceAdjustment(GoodsPriceAdjustmentDto goodPriceAdjustmentDto);
+    boolean deleteGoodsPriceAdjustmentByOrderSn(String orderSn);
 }

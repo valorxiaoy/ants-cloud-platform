@@ -12,15 +12,12 @@ import java.util.List;
 
 public interface IGoodsManagementService {
     /**
-     * 商品分类
-     * 一级 pid=0
-     * 二级 pid=id
-     * 三级 pid=id
+     * 所有商品分类 品牌 系列
      *
-     * @param goodsManagementDto
+     * @param storeId
      * @return
      */
-    List<GoodsManagementDto> searchGoodManagement(GoodsManagementDto goodsManagementDto);
+    List<GoodsManagementDto> searchGoodsManagementByStoreId(String storeId);
 
     /**
      * 根据id 获取对应的对象
@@ -28,7 +25,7 @@ public interface IGoodsManagementService {
      * @param id
      * @return
      */
-    GoodsManagementDto searchGoodManagementById(Integer id);
+    GoodsManagementDto searchGoodsManagementById(Integer id);
 
     /**
      * 添加分类
@@ -36,7 +33,7 @@ public interface IGoodsManagementService {
      * @param goodsManagementDto
      * @return
      */
-    boolean createGoodManagement(GoodsManagementDto goodsManagementDto);
+    boolean createGoodsManagementByStoreId(GoodsManagementDto goodsManagementDto);
 
     /**
      * 修改分类
@@ -44,13 +41,24 @@ public interface IGoodsManagementService {
      * @param goodsManagementDto
      * @return
      */
-    boolean updateGoodManagement(GoodsManagementDto goodsManagementDto);
+    boolean updateGoodsManagementByStoreId(GoodsManagementDto goodsManagementDto);
 
     /**
      * 删除分类
      *
-     * @param goodsManagementDto
+     * @param id
      * @return
      */
-    boolean deleteGoodManagement(GoodsManagementDto goodsManagementDto);
+    boolean deleteGoodsManagementById(Integer id);
+
+    /**
+     * 只要类别 不传参
+     * 只要品牌  2
+     * 只要系列  3
+     *
+     * @param storeId
+     * @param type    2  品牌  3  系列   4  不要服务项目  赠品
+     * @return
+     */
+    List<GoodsManagementDto> searchGoodsManagementBasicData(String storeId, Integer type);
 }

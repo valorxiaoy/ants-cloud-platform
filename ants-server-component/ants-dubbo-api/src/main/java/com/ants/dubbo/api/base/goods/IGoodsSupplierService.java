@@ -17,7 +17,7 @@ public interface IGoodsSupplierService {
      * @param storeId
      * @return
      */
-    List<GoodsSupplierDto> searchGoodSupplier(Integer storeId);
+    List<GoodsSupplierDto> searchGoodsSupplierByStoreId(Integer storeId);
 
     /**
      * 根据id 获取对象
@@ -25,7 +25,7 @@ public interface IGoodsSupplierService {
      * @param id
      * @return
      */
-    GoodsSupplierDto searchGoodSupplierById(Integer id);
+    GoodsSupplierDto searchGoodsSupplierById(Integer id);
 
     /**
      * 增加商品供应商
@@ -33,7 +33,7 @@ public interface IGoodsSupplierService {
      * @param goodSupplierDto
      * @return
      */
-    boolean createGoodSupplier(GoodsSupplierDto goodSupplierDto);
+    boolean createGoodsSupplierByStoreId(GoodsSupplierDto goodSupplierDto);
 
     /**
      * 修改商品供应商
@@ -41,13 +41,13 @@ public interface IGoodsSupplierService {
      * @param goodSupplierDto
      * @return
      */
-    boolean updateGoodSupplier(GoodsSupplierDto goodSupplierDto);
+    boolean updateGoodsSupplierByStoreId(GoodsSupplierDto goodSupplierDto);
 
     /**
      * 删除商品供应商
      *
-     * @param goodSupplierDto
+     * @param id
      * @return
      */
-    boolean deleteGoodSupplier(GoodsSupplierDto goodSupplierDto);
+    boolean deleteGoodsSupplierById(Integer id);
 }
