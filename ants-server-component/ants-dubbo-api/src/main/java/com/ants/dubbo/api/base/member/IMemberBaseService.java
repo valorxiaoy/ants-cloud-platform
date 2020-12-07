@@ -9,7 +9,7 @@ import com.ants.module.member.UmsMemberLevelDto;
  * @author Yueyang
  * @create 2020-11-09 19:11
  **/
-public interface IMemberService {
+public interface IMemberBaseService {
 
     /**
      * 根据会员ID，查询会员信息
@@ -26,4 +26,13 @@ public interface IMemberService {
      * @return 会员等级对象
      */
     UmsMemberLevelDto searchUmsMemberLevelByMemberId(Integer memberId);
+
+    /**
+     * 描述： 修改会员信息
+     *
+     * @param umsMemberDto:
+     * @return boolean
+     * @Author: 刘智
+     */
+    boolean updateUmsMember(UmsMemberDto umsMemberDto);
 }

@@ -1,7 +1,7 @@
 package com.ants.integral.service.impl;
 
 import com.ants.dubbo.api.base.goods.IGoodsBaseInfoService;
-import com.ants.dubbo.api.base.member.IMemberService;
+import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;
 import com.ants.integral.entity.IntegralRule;
@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 public class OrderIntegralServiceImpl implements IOrderIntegralService {
 
     @DubboReference
-    private IMemberService memberService;
+    private IMemberBaseService memberService;
 
     @DubboReference
     private IGoodsBaseInfoService iGoodsBaseInfoService;
@@ -53,11 +53,24 @@ public class OrderIntegralServiceImpl implements IOrderIntegralService {
     public OmsOrderDto calculation(OmsOrderDto omsOrderDto) {
         Long memberId = omsOrderDto.getMemberId();
         UmsMemberLevelDto umsMemberLevelDto = memberService.searchUmsMemberLevelByMemberId(memberId.intValue());
-        //  计算订单积分
+        //  计算订单积分o
         // 通过会员等级id 查询对应的积分规则通过会员id
+        if (umsMemberLevelDto == null) {
+            String exceptionMsg = String.format("通过订单查找会员等级, 未查到会员等级, 参数memberId: %s", memberId);
+            log.error(exceptionMsg);
+            return null;
+        }
         IntegralRuleDto integralRuleDto = searchIntegraRuleByMemberLevelId(umsMemberLevelDto);
-        OmsOrderDto newOmsOrderDto = doProductBrandPoints(integralRuleDto, omsOrderDto);
-        return newOmsOrderDto;
+        if (integralRuleDto == null) {
+            String exceptionMsg = String.format("通过会员等级查询积分方式, 未查到计分方式, 参数umsMemberLevelDto: %s", umsMemberLevelDto);
+            log.error(exceptionMsg);
+            return null;
+        }
+        // 通过积分方式计算积分
+        OmsOrderDto methodOmsOrderDto = doMethodPoints(integralRuleDto, omsOrderDto);
+        // 通过多倍积分获取最终积分
+        OmsOrderDto multipleOmsOrderDto = doMultiplePoints(integralRuleDto, methodOmsOrderDto);
+        return multipleOmsOrderDto;
 
     }
 
@@ -77,7 +90,8 @@ public class OrderIntegralServiceImpl implements IOrderIntegralService {
             List<IntegralRule> integralRules = integralRuleMapper.selectList(integralRuleQueryWrapper);
             if (integralRules.size() > 1) {
                 String exceptionMsg = String.format("通过会员等级查找积分方式, 查到多个积分方式, 参数umsMemberLevelDto: %s", umsMemberLevelDto);
-                throw new BusinessException(exceptionMsg);
+                log.error(exceptionMsg);
+                return null;
             } else {
                 IntegralRule integralRule = integralRules.stream().findFirst().get();
                 IntegralRuleDto integralRuleDto = new IntegralRuleDto();
@@ -90,8 +104,15 @@ public class OrderIntegralServiceImpl implements IOrderIntegralService {
         }
     }
 
-
-    public OmsOrderDto doProductBrandPoints(IntegralRuleDto integralRuleDto, final OmsOrderDto omsOrderDto) {
+    /**
+     * 描述：根据积分规则计算积分
+     *
+     * @param integralRuleDto: 积分规则
+     * @param omsOrderDto:     订单Dto对象
+     * @return com.ants.module.order.OmsOrderDto
+     * @Author: 刘智
+     */
+    public OmsOrderDto doMethodPoints(IntegralRuleDto integralRuleDto, final OmsOrderDto omsOrderDto) {
         // 1. 判定消费特价商品积分
         // 2. 积分付款的金额不再积分
         // 3. 积分方式
@@ -99,6 +120,11 @@ public class OrderIntegralServiceImpl implements IOrderIntegralService {
         // 3.2 金额
         // 4. 执行多倍
         // 筛选所有不能积分的商品
+        if (integralRuleDto == null || omsOrderDto == null) {
+            String exceptionMsg = String.format("根据积分方式计算积分, 传入参数为null, 参数integralRuleDto && omsOrderDto : %s", integralRuleDto + "&&" + omsOrderDto);
+            log.error(exceptionMsg);
+            return omsOrderDto;
+        }
         List<OmsOrderItemDto> collect = omsOrderDto.getOrderItemList().stream().filter(bean -> {
             Integer productId = bean.getProductId();
             Integer storeId = omsOrderDto.getStoreId();
@@ -150,6 +176,18 @@ public class OrderIntegralServiceImpl implements IOrderIntegralService {
                 }
             });
         }
+        return omsOrderDto;
+    }
+
+    /**
+     * 描述：根据多倍积分方式积分
+     *
+     * @param integralRuleDto: 积分方式
+     * @param omsOrderDto:     订单DTO对象
+     * @return com.ants.module.order.OmsOrderDto
+     * @Author: 刘智
+     */
+    public OmsOrderDto doMultiplePoints(IntegralRuleDto integralRuleDto, final OmsOrderDto omsOrderDto) {
         //  算多倍
         UmsMemberDto umsMemberDto = memberService.searchUmsMember(omsOrderDto.getMemberId().intValue());
         Date birthday = umsMemberDto.getBirthday();

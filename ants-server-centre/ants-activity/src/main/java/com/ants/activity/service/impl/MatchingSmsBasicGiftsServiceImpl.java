@@ -3,7 +3,7 @@ package com.ants.activity.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.ants.activity.dto.MatchingRulesDto;
-import com.ants.dubbo.api.base.member.IMemberService;
+import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.service.activity.IMatchingSmsBasicGiftsService;
 import com.ants.dubbo.api.service.activity.ISmsBasicGiftsService;
 import com.ants.module.activity.SmsBasicGiftsDto;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class MatchingSmsBasicGiftsServiceImpl implements IMatchingSmsBasicGiftsService {
 
     @DubboReference
-    private IMemberService memberService;
+    private IMemberBaseService memberService;
 
     @DubboReference
     private ISmsBasicGiftsService smsBasicGiftsService;
