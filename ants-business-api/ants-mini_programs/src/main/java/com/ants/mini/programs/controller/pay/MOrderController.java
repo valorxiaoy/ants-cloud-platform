@@ -30,7 +30,6 @@ public class MOrderController {
      * @param shoppingCartDtos 购物车列表
      * @return 订单对象
      */
-    // @SentinelResource(value = "pre-created-order", blockHandler = "blockHandlerForGetUser")
     @RequestMapping(value = "/mini/programs/order/{storeId}/{memberId}/{sourceType}/{orderType}", method = RequestMethod.POST)
     public Object createOrder(@PathVariable("storeId") String storeId, @PathVariable("memberId") String memberId,
                               @PathVariable("sourceType") String sourceType, @PathVariable("orderType") String orderType,
@@ -49,16 +48,6 @@ public class MOrderController {
             return new CommonResult().failed(e.getMessage());
         }
     }
-
-    /**
-     * blockHandler 函数，原方法调用被限流/降级/系统保护的时候调用
-     * @param id
-     * @param ex
-     * @return
-     */
-    /*public Object blockHandlerForGetUser(String id, BlockException ex) {
-        return null;
-    }*/
 
     /**
      * 根据订单编号 查询待支付订单

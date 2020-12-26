@@ -1,7 +1,6 @@
 package com.ants.order.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ants.dubbo.api.base.goods.IGoodsBaseInfoService;
 import com.ants.dubbo.api.service.activity.IAppletsActivityService;
 import com.ants.dubbo.api.service.activity.IMatchingSmsBasicGiftsService;
 import com.ants.dubbo.api.service.activity.IMatchingSmsCouponService;
@@ -97,6 +96,33 @@ public class OrderServerImpl implements IOrderServer {
 
             // 计算订单获得积分
             omsOrderDto = orderIntegralService.calculation(omsOrderDto);
+            return omsOrderDto;
+        }
+    }
+
+    @Override
+    public OmsOrderDto searchOrderByOrderSn(String orderSn) {
+        QueryWrapper<OmsOrder> omsOrderQueryWrapper = new QueryWrapper<>();
+        omsOrderQueryWrapper.eq("order_sn", orderSn);
+
+        List<OmsOrder> omsOrders = omsOrderMapper.selectList(omsOrderQueryWrapper);
+        if (omsOrders == null || omsOrders.size() <= 0) {
+            String exceptionMsg = String.format("未找到订单数据，参数orderSn：%s", orderSn);
+            log.error(exceptionMsg);
+            return null;
+        } else {
+            Optional<OmsOrder> first = omsOrders.stream().findFirst();
+            OmsOrder omsOrder = first.get();
+
+            OmsOrderDto omsOrderDto = new OmsOrderDto();
+            BeanUtils.copyBeanProp(omsOrderDto, omsOrder);
+
+            QueryWrapper<OmsOrderItem> omsOrderItemQueryWrapper = new QueryWrapper<>();
+            omsOrderItemQueryWrapper.eq("order_sn", orderSn);
+            List<OmsOrderItem> omsOrderItemList = omsOrderItemMapper.selectList(omsOrderItemQueryWrapper);
+            List<OmsOrderItemDto> omsOrderItemDtoList = BeanUtils.converteToDtoArray(omsOrderItemList, OmsOrderItemDto.class);
+            omsOrderDto.setOrderItemList(omsOrderItemDtoList);
+
             return omsOrderDto;
         }
     }

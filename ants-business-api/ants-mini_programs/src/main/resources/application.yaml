@@ -7,3 +7,10 @@ dubbo:
     port: -1
   cloud:
     subscribed-services: ants-goods-base-server, ants-member-base-server, ants-store-base-server, ants-integral, ants-order
+
+spring:
+  rabbitmq:
+    host: 192.168.1.36
+    username: yueyang
+    password: 123123
+    virtual-host: prontera

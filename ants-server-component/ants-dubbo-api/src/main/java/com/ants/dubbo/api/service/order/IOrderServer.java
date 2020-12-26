@@ -19,6 +19,14 @@ public interface IOrderServer {
     OmsOrderDto searchOrder(String storeId, String memberId, String orderSn);
 
     /**
+     * 根据订单编号查询订单信息
+     *
+     * @param orderSn 订单编号
+     * @return 订单对象
+     */
+    OmsOrderDto searchOrderByOrderSn(String orderSn);
+
+    /**
      * 更新订单数据
      *
      * @param omsOrderDto 待更新订单数据

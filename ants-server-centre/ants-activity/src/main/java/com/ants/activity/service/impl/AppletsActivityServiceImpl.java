@@ -48,4 +48,13 @@ public class AppletsActivityServiceImpl implements IAppletsActivityService {
         BeanUtils.copyBeanProp(appletsActivityDto, appletsActivity);
         return appletsActivityDto;
     }
+
+    @Override
+    public boolean partakeInActivityById(Integer appletsActivityId) {
+        AppletsActivity appletsActivity = appletsActivityMapper.selectById(appletsActivityId);
+        Integer activityPeople = appletsActivity.getActivityPeople() != null ? appletsActivity.getActivityPeople() + 1 : 1;
+        appletsActivity.setActivityPeople(activityPeople);
+        boolean isUpdate = appletsActivityMapper.updateById(appletsActivity) > 0;
+        return isUpdate;
+    }
 }

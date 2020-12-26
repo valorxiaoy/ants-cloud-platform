@@ -25,7 +25,6 @@ package com.ants.order.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.ants.dubbo.api.base.goods.IGoodsManagementService;
 import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;

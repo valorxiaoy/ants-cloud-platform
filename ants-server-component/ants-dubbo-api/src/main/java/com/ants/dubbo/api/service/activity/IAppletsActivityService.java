@@ -26,4 +26,12 @@ public interface IAppletsActivityService {
      * @return 活动对象
      */
     AppletsActivityDto searchAppletsActivityById(Integer id);
+
+    /**
+     * 参与活动
+     *
+     * @param appletsActivityId 活动ID
+     * @return 是否参与成功
+     */
+    boolean partakeInActivityById(Integer appletsActivityId);
 }

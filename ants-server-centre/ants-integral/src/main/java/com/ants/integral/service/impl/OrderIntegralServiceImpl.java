@@ -1,6 +1,5 @@
 package com.ants.integral.service.impl;
 
-import com.ants.dubbo.api.base.goods.IGoodsBaseInfoService;
 import com.ants.dubbo.api.base.member.IMemberBaseService;
 import com.ants.dubbo.api.base.store.IStoreService;
 import com.ants.dubbo.api.service.integral.IOrderIntegralService;

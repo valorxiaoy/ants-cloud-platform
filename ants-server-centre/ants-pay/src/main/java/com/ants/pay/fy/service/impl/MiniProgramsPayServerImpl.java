@@ -42,8 +42,8 @@ public class MiniProgramsPayServerImpl implements IMiniProgramsPayServer {
 
     @Override
     public Map<String, String> payOrder(String openId, OmsOrderDto omsOrderDto) {
-        Map<String, String> preOrderMap = getPreOrderMap(openId, omsOrderDto);
         try {
+            Map<String, String> preOrderMap = getPreOrderMap(openId, omsOrderDto);
             Map<String, String> buildOrderMap = buildOrderMap(preOrderMap);
             return buildOrderMap;
         } catch (Exception e) {
@@ -189,7 +189,7 @@ public class MiniProgramsPayServerImpl implements IMiniProgramsPayServer {
      * @return 富有支付信息
      */
     private SmsWxPay getFyPayInfo(Integer storeId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
+        QueryWrapper<SmsWxPay> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("store_id", storeId);
         SmsWxPay smsWxPay = smsWxPayMapper.selectOne(queryWrapper);
         if (smsWxPay == null || "".equals(smsWxPay.getMchId()) || "".equals(smsWxPay.getAppId())) {

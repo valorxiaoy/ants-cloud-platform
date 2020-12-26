@@ -18,4 +18,12 @@ public interface IOrderChannelServer {
      */
     @Input("pre-create-order-input")
     SubscribableChannel preCreateOrder();
+
+    /**
+     * 支付成功-处理订单数据
+     *
+     * @return 返回通道
+     */
+    @Input("pay-suessus-order-input")
+    SubscribableChannel paySuessusOrder();
 }
