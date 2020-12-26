@@ -1,17 +1,15 @@
 package com.ants.base.goods.mapper;
 
-import io.renren.modules.generator.entity.GoodsPriceAdjustmentItemEntity;
+
+import com.ants.base.goods.entity.GoodsPriceAdjustmentItemEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 商品调价记录详情表
- * 
- * @author chenshun
- * @email sunlightcs@gmail.com
+ *
+ * @author 小米
  * @date 2020-12-26 16:34:50
  */
-@Mapper
 public interface GoodsPriceAdjustmentItemMapper extends BaseMapper<GoodsPriceAdjustmentItemEntity> {
-	
+
 }
