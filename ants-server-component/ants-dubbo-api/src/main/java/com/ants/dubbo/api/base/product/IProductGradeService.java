@@ -11,14 +11,14 @@ import java.util.List;
  * @author 小米
  * @date 2020-12-26 16:34:51
  */
-public interface ProductGradeService {
+public interface IProductGradeService {
     /**
      * 根据id 获取对应的等级
      *
      * @param id
      * @return 等级对象
      */
-    ProductGradeDto getProductGrade(Integer id);
+    ProductGradeDto getProductGradeDto(Integer id);
 
     /**
      * 描述： 修改等级信息
@@ -42,7 +42,7 @@ public interface ProductGradeService {
      * @param storeId
      * @return 多个等级对象
      */
-    List<ProductGradeDto> listProductGradeByStoreId(Integer storeId);
+    List<ProductGradeDto> searchProductGradeByStoreId(Integer storeId);
 
     /**
      * 根据id 删除对应的等级
@@ -50,6 +50,6 @@ public interface ProductGradeService {
      * @param id
      * @return boolean
      */
-    boolean deleteProductGrade(Integer id);
+    boolean deleteProductGradeDto(Integer id);
 }
 

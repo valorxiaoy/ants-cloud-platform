@@ -3,7 +3,7 @@ package com.ants.base.goods.service.impl;
 
 import com.ants.base.goods.entity.ProductGradeEntity;
 import com.ants.base.goods.mapper.ProductGradeMapper;
-import com.ants.dubbo.api.base.product.ProductGradeService;
+import com.ants.dubbo.api.base.product.IProductGradeService;
 import com.ants.module.goods.base.dto.ProductGradeDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
@@ -18,13 +18,13 @@ import java.util.List;
 
 @Slf4j
 @DubboService
-public class ProductGradeServiceImpl implements ProductGradeService {
+public class ProductGradeServiceImpl implements IProductGradeService {
 
     @Resource
     private ProductGradeMapper productGradeMapper;
 
     @Override
-    public ProductGradeDto getProductGrade(Integer id) {
+    public ProductGradeDto getProductGradeDto(Integer id) {
         try {
             if (id == null) {
                 String exceptionMsg = String.format("商品等级异常, 参数不正确, 参数id: %s", id);
@@ -102,7 +102,7 @@ public class ProductGradeServiceImpl implements ProductGradeService {
     }
 
     @Override
-    public List<ProductGradeDto> listProductGradeByStoreId(Integer storeId) {
+    public List<ProductGradeDto> searchProductGradeByStoreId(Integer storeId) {
         try {
             if (storeId == null) {
                 String exceptionMsg = String.format("商品等级异常, 参数不正确, 参数storeId: %s", storeId);
@@ -121,7 +121,7 @@ public class ProductGradeServiceImpl implements ProductGradeService {
     }
 
     @Override
-    public boolean deleteProductGrade(Integer id) {
+    public boolean deleteProductGradeDto(Integer id) {
         try {
             if (id == null) {
                 String exceptionMsg = String.format("商品等级异常, 参数不正确, 参数id: %s", id);

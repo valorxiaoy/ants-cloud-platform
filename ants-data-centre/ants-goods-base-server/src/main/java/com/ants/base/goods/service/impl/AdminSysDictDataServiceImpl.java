@@ -22,7 +22,7 @@ public class AdminSysDictDataServiceImpl implements AdminSysDictDataService {
     private AdminSysDictDataMapper adminSysDictDataMapper;
 
     @Override
-    public AdminSysDictDataDto getAdminSysDictDataEntity(Integer id) {
+    public AdminSysDictDataDto getAdminSysDictDataDto(Integer id) {
         try {
             if (id == null) {
                 String exceptionMsg = String.format("字典异常, 参数不正确, 参数id: %s", id);
@@ -43,12 +43,13 @@ public class AdminSysDictDataServiceImpl implements AdminSysDictDataService {
     }
 
     @Override
-    public boolean updateAdminSysDictDataEntityByStoreId(AdminSysDictDataDto adminSysDictDataDto) {
+    public boolean updateAdminSysDictDataByStoreId(AdminSysDictDataDto adminSysDictDataDto) {
+        //TODO dictCode 不能重复
         try {
             AdminSysDictDataEntity adminSysDictDataEntity = new AdminSysDictDataEntity();
             BeanUtils.copyProperties(adminSysDictDataDto, adminSysDictDataEntity);
             if (adminSysDictDataMapper.updateById(adminSysDictDataEntity) < 0) {
-                String exceptionMsg = String.format("字典异常, 字典修改失败, 参数adminSysDictDataEntity: %s", adminSysDictDataEntity);
+                String exceptionMsg = String.format("字典修改异常, 字典修改失败, 参数adminSysDictDataEntity: %s", adminSysDictDataEntity);
                 throw new BusinessException(exceptionMsg);
             }
             return true;
@@ -59,12 +60,14 @@ public class AdminSysDictDataServiceImpl implements AdminSysDictDataService {
     }
 
     @Override
-    public boolean insertAdminSysDictDataEntityByStoreId(AdminSysDictDataDto adminSysDictDataDto) {
+    public boolean insertAdminSysDictDataByStoreId(AdminSysDictDataDto adminSysDictDataDto) {
+        //TODO dictCode 不能重复
+        //TODO id 用雪花
         try {
             AdminSysDictDataEntity adminSysDictDataEntity = new AdminSysDictDataEntity();
             BeanUtils.copyProperties(adminSysDictDataDto, adminSysDictDataEntity);
             if (adminSysDictDataMapper.insert(adminSysDictDataEntity) < 0) {
-                String exceptionMsg = String.format("字典异常, 字典添加失败, 参数adminSysDictDataEntity: %s", adminSysDictDataEntity);
+                String exceptionMsg = String.format("字典添加异常, 字典添加失败, 参数adminSysDictDataEntity: %s", adminSysDictDataEntity);
                 throw new BusinessException(exceptionMsg);
             }
             return true;
@@ -75,10 +78,10 @@ public class AdminSysDictDataServiceImpl implements AdminSysDictDataService {
     }
 
     @Override
-    public List<AdminSysDictDataDto> listAdminSysDictDataEntityByStoreId(String dictType) {
+    public List<AdminSysDictDataDto> searchAdminSysDictDataDtoByStoreId(String dictType) {
         try {
             if (dictType == null) {
-                String exceptionMsg = String.format("字典异常, 参数不正确, 参数dictType: %s", dictType);
+                String exceptionMsg = String.format("字典查询异常, 参数不正确, 参数dictType: %s", dictType);
                 throw new BusinessException(exceptionMsg);
             }
             QueryWrapper<AdminSysDictDataEntity> queryWrappe = new QueryWrapper();
@@ -86,7 +89,7 @@ public class AdminSysDictDataServiceImpl implements AdminSysDictDataService {
             queryWrappe.eq("is_delete", 0);
             List<AdminSysDictDataEntity> adminSysDictDataEntities = adminSysDictDataMapper.selectList(queryWrappe);
             if (adminSysDictDataEntities == null) {
-                String exceptionMsg = String.format("字典异常, 未找到字典类型, 参数dictType: %s", dictType);
+                String exceptionMsg = String.format("字典查询异常, 未找到字典类型, 参数dictType: %s", dictType);
                 throw new BusinessException(exceptionMsg);
             }
             List<AdminSysDictDataDto> dataDtoList = BeanUtils.converteToDtoArray(adminSysDictDataEntities, AdminSysDictDataDto.class);
@@ -98,7 +101,24 @@ public class AdminSysDictDataServiceImpl implements AdminSysDictDataService {
     }
 
     @Override
-    public boolean deleteAdminSysDictDataEntity(Integer id) {
+    public boolean deleteAdminSysDictData(Long dictCode) {
+        try {
+            if (dictCode == null) {
+                String exceptionMsg = String.format("字典删除异常, 参数不正确, 参数dictCode: %s", dictCode);
+                throw new BusinessException(exceptionMsg);
+            }
+            QueryWrapper<AdminSysDictDataEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("dict_code", dictCode);
+            AdminSysDictDataEntity adminSysDictDataEntity = new AdminSysDictDataEntity();
+            adminSysDictDataEntity.setIsDelete(1);
+            if (adminSysDictDataMapper.update(adminSysDictDataEntity, queryWrapper) < 0) {
+                String exceptionMsg = String.format("字典删除异常, 字典删除失败, 参数adminSysDictDataEntity: %s", adminSysDictDataEntity);
+                throw new BusinessException(exceptionMsg);
+            }
+            return true;
+        } catch (BusinessException businessException) {
+            businessException.printStackTrace();
+        }
         return false;
     }
 }

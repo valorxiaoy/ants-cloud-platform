@@ -2,7 +2,7 @@ package com.ants.base.goods.service.impl;
 
 import com.ants.base.goods.entity.ProductUnitEntity;
 import com.ants.base.goods.mapper.ProductUnitMapper;
-import com.ants.dubbo.api.base.product.ProductUnitService;
+import com.ants.dubbo.api.base.product.IProductUnitService;
 import com.ants.module.goods.base.dto.ProductUnitDto;
 import com.ants.tools.exception.BusinessException;
 import com.ants.tools.utils.BeanUtils;
@@ -16,12 +16,12 @@ import java.util.List;
 
 @Slf4j
 @DubboService
-public class ProductUnitServiceImpl implements ProductUnitService {
+public class ProductUnitServiceImpl implements IProductUnitService {
     @Resource
     private ProductUnitMapper productUnitMapper;
 
     @Override
-    public ProductUnitDto getProductUnit(Integer id) {
+    public ProductUnitDto getProductUnitDtoById(Integer id) {
         try {
             if (id == null) {
                 String exceptionMsg = String.format("商品单位异常, 参数不正确, 参数id: %s", id);
@@ -96,7 +96,7 @@ public class ProductUnitServiceImpl implements ProductUnitService {
     }
 
     @Override
-    public List<ProductUnitDto> listProductUnitByStoreId(Integer storeId) {
+    public List<ProductUnitDto> searchProductUnitDtoByStoreId(Integer storeId) {
         try {
             if (storeId == null) {
                 String exceptionMsg = String.format("商品单位异常, 参数不正确, 参数storeId: %s", storeId);

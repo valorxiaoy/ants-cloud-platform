@@ -1,5 +1,6 @@
 package com.ants.module.goods.base.dto;
 
+import com.ants.module.BaseDto;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @date 2020-12-26 16:34:50
  */
 @Data
-public class AdminSysDictDataDto implements Serializable {
+public class AdminSysDictDataDto extends BaseDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -55,33 +56,9 @@ public class AdminSysDictDataDto implements Serializable {
      */
     private String status;
     /**
-     * 所属门店ID
-     */
-    private Long storeId;
-    /**
      * 所属父类
      */
     private Long pid;
-    /**
-     * 是否禁用：0->未禁用；1->已禁用
-     */
-    private Integer isDelete;
-    /**
-     * 创建时间
-     */
-    private String createTime;
-    /**
-     * 创建人
-     */
-    private Long createId;
-    /**
-     * 更新时间
-     */
-    private String updateTime;
-    /**
-     * 更新人
-     */
-    private Long updateId;
     /**
      * 备注
      */

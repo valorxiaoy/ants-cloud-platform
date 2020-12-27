@@ -1,8 +1,10 @@
 package com.ants.module.goods.base.dto;
 
+import com.ants.module.BaseDto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 商品调价记录表
@@ -11,7 +13,7 @@ import java.io.Serializable;
  * @date 2020-12-26 16:34:50
  */
 @Data
-public class ProductPriceAdjustmentDto implements Serializable {
+public class ProductPriceAdjustmentDto extends BaseDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -67,28 +69,12 @@ public class ProductPriceAdjustmentDto implements Serializable {
      */
     private Integer auditorUserType;
     /**
-     * 所属门店ID
+     * 开始时间
      */
-    private Long storeId;
+    private String startTime;
     /**
-     * 是否禁用：0->未禁用；1->已禁用
+     * 结束时间
      */
-    private Integer isDelete;
-    /**
-     * 创建时间
-     */
-    private String createTime;
-    /**
-     * 创建人
-     */
-    private Long createId;
-    /**
-     * 更新时间
-     */
-    private String updateTime;
-    /**
-     * 更新人
-     */
-    private Long updateId;
-
+    private String endTime;
+    private List<ProductPriceAdjustmentItemDto> list;
 }

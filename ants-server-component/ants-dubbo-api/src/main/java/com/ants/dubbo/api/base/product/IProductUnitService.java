@@ -11,14 +11,14 @@ import java.util.List;
  * @author 小米
  * @date 2020-12-26 16:34:50
  */
-public interface ProductUnitService {
+public interface IProductUnitService {
     /**
      * 根据id 获取对应的单位
      *
      * @param id
      * @return 单位对象
      */
-    ProductUnitDto getProductUnit(Integer id);
+    ProductUnitDto getProductUnitDtoById(Integer id);
 
     /**
      * 描述： 修改单位信息
@@ -42,7 +42,7 @@ public interface ProductUnitService {
      * @param storeId
      * @return 多个单位对象
      */
-    List<ProductUnitDto> listProductUnitByStoreId(Integer storeId);
+    List<ProductUnitDto> searchProductUnitDtoByStoreId(Integer storeId);
 
     /**
      * 根据id 删除对应的单位

@@ -11,15 +11,15 @@ import java.util.List;
  * @author 小米
  * @date 2020-12-26 16:34:50
  */
-public interface ProductManagementService {
+public interface IProductManagementService {
     /**
      * 根据传type 获取storeId 下的对应的数据
      *
      * @param storeId 门店id
-     * @param type    1->类别   2->品牌   3->系列
+     * @param type    1->类别   2->品牌   3->系列    4->(类别)不要赠品 和  服务项目
      * @return
      */
-    List<ProductManagementDto> listProductManagementByStoreId(Integer storeId, Integer type);
+    List<ProductManagementDto> searchProductManagementByStoreId(Integer storeId, Integer type);
 
     /**
      * 根据id  获取对象
@@ -27,7 +27,7 @@ public interface ProductManagementService {
      * @param id
      * @return 对象
      */
-    ProductManagementDto getProductManagementById(Integer id);
+    ProductManagementDto getProductManagementDtoById(Integer id);
 
     /**
      * 新建类别 品牌  系列

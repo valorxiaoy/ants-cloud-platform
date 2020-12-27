@@ -1,5 +1,6 @@
 package com.ants.module.goods.base.dto;
 
+import com.ants.module.BaseDto;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
  * @date 2020-12-26 16:34:50
  */
 @Data
-public class ProductPriceAdjustmentItemDto implements Serializable {
+public class ProductPriceAdjustmentItemDto extends BaseDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -39,29 +40,5 @@ public class ProductPriceAdjustmentItemDto implements Serializable {
      * 最低限价
      */
     private BigDecimal lowerPrice;
-    /**
-     * 所属门店ID
-     */
-    private Long storeId;
-    /**
-     * 是否禁用：0->未禁用；1->已禁用
-     */
-    private Integer isDelete;
-    /**
-     * 创建时间
-     */
-    private String createTime;
-    /**
-     * 创建人
-     */
-    private Long createId;
-    /**
-     * 更新时间
-     */
-    private String updateTime;
-    /**
-     * 更新人
-     */
-    private Long updateId;
 
 }

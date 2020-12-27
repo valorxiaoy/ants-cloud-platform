@@ -18,7 +18,7 @@ public interface AdminSysDictDataService {
      * @param id
      * @return 字典对象
      */
-    AdminSysDictDataDto getAdminSysDictDataEntity(Integer id);
+    AdminSysDictDataDto getAdminSysDictDataDto(Integer id);
 
     /**
      * 描述： 修改字典信息
@@ -26,7 +26,7 @@ public interface AdminSysDictDataService {
      * @param adminSysDictDataDto:
      * @return boolean
      */
-    boolean updateAdminSysDictDataEntityByStoreId(AdminSysDictDataDto adminSysDictDataDto);
+    boolean updateAdminSysDictDataByStoreId(AdminSysDictDataDto adminSysDictDataDto);
 
     /**
      * 描述： 创建字典信息
@@ -34,7 +34,7 @@ public interface AdminSysDictDataService {
      * @param adminSysDictDataDto:
      * @return boolean
      */
-    boolean insertAdminSysDictDataEntityByStoreId(AdminSysDictDataDto adminSysDictDataDto);
+    boolean insertAdminSysDictDataByStoreId(AdminSysDictDataDto adminSysDictDataDto);
 
     /**
      * 根据门店id 获取对应的字典
@@ -42,14 +42,14 @@ public interface AdminSysDictDataService {
      * @param dictType
      * @return 多个字典对象
      */
-    List<AdminSysDictDataDto> listAdminSysDictDataEntityByStoreId(String dictType);
+    List<AdminSysDictDataDto> searchAdminSysDictDataDtoByStoreId(String dictType);
 
     /**
-     * 根据id 删除对应的字典
+     * 根据dictCode 删除对应的字典
      *
-     * @param id
+     * @param dictCode
      * @return boolean
      */
-    boolean deleteAdminSysDictDataEntity(Integer id);
+    boolean deleteAdminSysDictData(Long dictCode);
 }
 
