@@ -8,14 +8,14 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 商品sku键表
+ * 商品单位表
  * 
  * @author 小米
- * @date 2020-12-26 16:34:51
+ * @date 2020-12-26 16:34:50
  */
 @Data
-@TableName("goods_sku_keys")
-public class GoodsSkuKeysEntity implements Serializable {
+@TableName("goods_unit")
+public class ProductUnitEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,21 +24,13 @@ public class GoodsSkuKeysEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
-	 * 键编码
+	 * 单位名称
 	 */
-	private String skuKeyCode;
+	private String unitName;
 	/**
-	 * 商品品类编码
+	 * 单位编码
 	 */
-	private Long categoryCode;
-	/**
-	 * 属性名称
-	 */
-	private String attributeName;
-	/**
-	 * 名称排序
-	 */
-	private Integer nameSort;
+	private String code;
 	/**
 	 * 所属门店ID
 	 */

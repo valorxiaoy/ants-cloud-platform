@@ -8,14 +8,14 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 商品调价记录表
+ * 商品规格表
  * 
  * @author 小米
  * @date 2020-12-26 16:34:50
  */
 @Data
-@TableName("goods_price_adjustment")
-public class GoodsPriceAdjustmentEntity implements Serializable {
+@TableName("goods_specs")
+public class ProductSpecsEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -26,57 +26,53 @@ public class GoodsPriceAdjustmentEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private String billSn;
+	private String goodCode;
 	/**
-	 * 状态 0未审核 1审核
+	 * sku属性
+	 */
+	private String productSpecs;
+	/**
+	 * 商品主图
+	 */
+	private String productMasterPicture;
+	/**
+	 * 商品缩略图
+	 */
+	private String productThumbnail;
+	/**
+	 * 商品图集
+	 */
+	private String productAtlas;
+	/**
+	 * 是否默认选项
+	 */
+	private Integer isDefaultOption;
+	/**
+	 * 商品进价
+	 */
+	private Integer inprice;
+	/**
+	 * 零售价
+	 */
+	private Integer retailPrice;
+	/**
+	 * 商品状态  正常/淘汰/暂停进货/停售   0/1/2/3
 	 */
 	private Integer state;
 	/**
-	 * 制单人id
+	 * 毛利率
 	 */
-	private Long userId;
+	private Double grossMargin;
 	/**
-	 * 审核人id
+	 * 最低限价
 	 */
-	private Long auditorUserId;
-	/**
-	 * 审核时间
-	 */
-	private Date auditorTime;
-	/**
-	 * 已废弃
-	 */
-	private Date makerTime;
-	/**
-	 * 备注
-	 */
-	private String note;
-	/**
-	 * 已废弃
-	 */
-	private String detaile;
-	/**
-	 * 生效门店，已废弃
-	 */
-	private Long auditstoreId;
-	/**
-	 * 商品ID，已废弃
-	 */
-	private Integer goodId;
-	/**
-	 * 制单人类型，已废弃
-	 */
-	private Integer userType;
-	/**
-	 * 审核人类型，已废弃
-	 */
-	private Integer auditorUserType;
+	private Integer lowerPrice;
 	/**
 	 * 所属门店ID
 	 */
 	private Long storeId;
 	/**
-	 * 是否禁用：0->未禁用；1->已禁用
+	 * 是否禁用
 	 */
 	private Integer isDelete;
 	/**

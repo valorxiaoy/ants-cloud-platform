@@ -1,7 +1,7 @@
 package com.ants.base.goods.mapper;
 
 
-import com.ants.base.goods.entity.GoodsSkuValueEntity;
+import com.ants.base.goods.entity.ProductSkuValueEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -10,6 +10,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author 小米
  * @date 2020-12-26 16:34:50
  */
-public interface GoodsSkuValueMapper extends BaseMapper<GoodsSkuValueEntity> {
+public interface ProductSkuValueMapper extends BaseMapper<ProductSkuValueEntity> {
 
 }
