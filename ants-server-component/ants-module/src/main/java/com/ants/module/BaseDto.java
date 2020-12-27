@@ -10,4 +10,30 @@ import lombok.Data;
  **/
 @Data
 public class BaseDto {
+
+    private String sessionRedisKey;
+    /**
+     * 所属门店ID
+     */
+    private Long storeId;
+    /**
+     * 是否禁用
+     */
+    private Integer isDelete;
+    /**
+     * 创建时间
+     */
+    private String createTime;
+    /**
+     * 创建人
+     */
+    private Long createId;
+    /**
+     * 更新时间
+     */
+    private String updateTime;
+    /**
+     * 更新人
+     */
+    private Long updateId;
 }
