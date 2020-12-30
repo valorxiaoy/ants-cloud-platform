@@ -44,6 +44,6 @@ public interface IProductPriceAdjustmentItemService {
      * @param id
      * @return boolean
      */
-    boolean deleteProductPriceAdjustmentItemDto(Integer id);
+    boolean deleteProductPriceAdjustmentItemDto(Long id);
 }
 

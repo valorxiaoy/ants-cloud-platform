@@ -50,6 +50,6 @@ public interface IProductGradeService {
      * @param id
      * @return boolean
      */
-    boolean deleteProductGradeDto(Integer id);
+    boolean deleteProductGradeDto(Long id);
 }
 

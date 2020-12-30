@@ -84,7 +84,7 @@ public class ProductPriceAdjustmentServiceImpl implements IProductPriceAdjustmen
                 throw new BusinessException("修改失败，商品调价单信息修改发生未知异常。");
             }
             //删除明细
-            if (!iProductPriceAdjustmentItemService.deleteProductPriceAdjustmentItemDto(productUnitDto.getId().intValue())) {
+            if (!iProductPriceAdjustmentItemService.deleteProductPriceAdjustmentItemDto(productUnitDto.getId())) {
                 log.error("修改失败, 商品调价单修改失败删除明细, 参数orderSn: %s", productUnitDto.getBillSn());
                 String exceptionMsg = String.format("修改失败, 商品调价单修改失败删除明细, 参数orderSn: %s", productUnitDto.getBillSn());
                 throw new BusinessException(exceptionMsg);
@@ -230,7 +230,7 @@ public class ProductPriceAdjustmentServiceImpl implements IProductPriceAdjustmen
                 throw new BusinessException("创建失败，商品调价单信息修改发生未知异常。");
             }
 
-            if (!iProductPriceAdjustmentItemService.deleteProductPriceAdjustmentItemDto(entity.getId().intValue())) {
+            if (!iProductPriceAdjustmentItemService.deleteProductPriceAdjustmentItemDto(entity.getId())) {
                 log.error("商品调价单异常, 商品调价单明细删除失败, 参数order_id: %s", orderSn);
                 String exceptionMsg = String.format("商品调价单异常, 商品调价单明细删除失败, 参数order_id: %s", orderSn);
                 throw new BusinessException(exceptionMsg);

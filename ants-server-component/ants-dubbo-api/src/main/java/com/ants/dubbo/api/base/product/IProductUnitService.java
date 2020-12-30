@@ -18,7 +18,7 @@ public interface IProductUnitService {
      * @param id
      * @return 单位对象
      */
-    ProductUnitDto getProductUnitDtoById(Integer id);
+    ProductUnitDto getProductUnitDtoById(Long id);
 
     /**
      * 描述： 修改单位信息
@@ -50,6 +50,6 @@ public interface IProductUnitService {
      * @param id
      * @return boolean
      */
-    boolean deleteProductUnit(Integer id);
+    boolean deleteProductUnit(Long id);
 }
 

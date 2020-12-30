@@ -18,7 +18,7 @@ public interface IProductSupplierService {
      * @param id
      * @return 供应商对象
      */
-    ProductSupplierDto getProductSupplierDto(Integer id);
+    ProductSupplierDto getProductSupplierDto(Long id);
 
     /**
      * 描述： 修改供应商信息
@@ -50,7 +50,7 @@ public interface IProductSupplierService {
      * @param id
      * @return boolean
      */
-    boolean deleteProductSupplierDto(Integer id);
+    boolean deleteProductSupplierDto(Long id);
 
 }
 

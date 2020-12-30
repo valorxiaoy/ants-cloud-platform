@@ -18,7 +18,7 @@ public interface IProductPriceAdjustmentService {
      * @param id
      * @return 调价单对象
      */
-    ProductPriceAdjustmentDto getProductPriceAdjustmentDto(Integer id);
+    ProductPriceAdjustmentDto getProductPriceAdjustmentDto(Long id);
 
     /**
      * 描述： 修改调价单信息

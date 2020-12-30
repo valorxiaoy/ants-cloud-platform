@@ -16,7 +16,7 @@ public interface IProductManagementService {
      * 根据传type 获取storeId 下的对应的数据
      *
      * @param storeId 门店id
-     * @param type    1->类别   2->品牌   3->系列    4->(类别)不要赠品 和  服务项目
+     * @param type    0->类别   2->品牌   3->系列    4->(类别)不要赠品 和  服务项目
      * @return
      */
     List<ProductManagementDto> searchProductManagementByStoreId(Integer storeId, Integer type);
@@ -27,7 +27,7 @@ public interface IProductManagementService {
      * @param id
      * @return 对象
      */
-    ProductManagementDto getProductManagementDtoById(Integer id);
+    ProductManagementDto getProductManagementDtoById(Long id);
 
     /**
      * 新建类别 品牌  系列
