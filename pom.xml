@@ -42,7 +42,7 @@
         <spring-cloud-starter-gateway.version>2.2.5.RELEASE</spring-cloud-starter-gateway.version>
 
         <!-- Apache Dubbo -->
-        <dubbo.version>2.7.8</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
         <curator.version>4.0.1</curator.version>
 
         <!-- Apache RocketMQ -->
